@@ -8,7 +8,12 @@ import headerNavLinks from '@/data/headerNavLinks'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const navRef = useRef(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -25,6 +30,26 @@ const MobileNav = () => {
   useEffect(() => {
     return clearAllBodyScrollLocks
   })
+
+  // 避免服务端和客户端渲染不一致
+  if (!mounted) {
+    return (
+      <button aria-label="Toggle Menu" className="sm:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="hover:text-primary-500 dark:hover:text-primary-400 h-8 w-8 text-gray-900 dark:text-gray-100"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+    )
+  }
 
   return (
     <>
@@ -43,7 +68,14 @@ const MobileNav = () => {
         </svg>
       </button>
       <Transition appear show={navShow} as={Fragment} unmount={false}>
-        <Dialog as="div" onClose={onToggleNav} unmount={false}>
+        <Dialog
+          as="div"
+          open={navShow}
+          onClose={onToggleNav}
+          unmount={false}
+          suppressHydrationWarning
+          className="relative z-50"
+        >
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"

@@ -1,15 +1,65 @@
 
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-      <title>Next.js Starter Blog</title>
+      <title>Next.js Starter Blog - Updated</title>
       <link>https://tailwind-nextjs-starter-blog.vercel.app/blog</link>
       <description>A blog created with Next.js and Tailwind.css</description>
       <language>en-us</language>
       <managingEditor>address@yoursite.com (Tails Azimuth)</managingEditor>
       <webMaster>address@yoursite.com (Tails Azimuth)</webMaster>
-      <lastBuildDate>Sat, 05 Aug 2023 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Tue, 26 Nov 2024 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://tailwind-nextjs-starter-blog.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/alliance-auto-promote</guid>
+    <title>淘宝京东联盟自动推荐系统实战</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/alliance-auto-promote</link>
+    <description>完整实现淘宝京东联盟商品自动获取、转链和展示的 React 组件系统</description>
+    <pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (Tails Azimuth)</author>
+    <category>淘宝联盟，京东联盟，电商，自动化</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/taobao-token-demo</guid>
+    <title>淘口令自动复制功能演示</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/taobao-token-demo</link>
+    <description>演示在微信环境中自动复制淘口令并弹出提示的 React 组件</description>
+    <pubDate>Mon, 25 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (Tails Azimuth)</author>
+    <category>淘宝，淘口令，微信，自动化</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/middleware-test</guid>
+    <title>Middleware 跳转测试页面</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/middleware-test</link>
+    <description>用于测试 Next.js Middleware 的极速跳转功能</description>
+    <pubDate>Wed, 20 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (Tails Azimuth)</author>
+    <category>测试，middleware</category><category>联盟链接</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/digital-products-roundup</guid>
+    <title>数码控必备 - 高性价比电子产品推荐清单</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/digital-products-roundup</link>
+    <description>精选 3C 数码产品，从手机到配件，全方位满足你的科技需求。支持按平台筛选、价格排序。</description>
+    <pubDate>Fri, 15 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (Tails Azimuth)</author>
+    <category>数码，电子产品，好物推荐</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/affiliate-shopping-guide</guid>
+    <title>2024 年双 11 购物攻略 - 淘宝京东必买好物推荐</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/affiliate-shopping-guide</link>
+    <description>双 11 购物节来了！精选淘宝和京东超值好物，使用专属链接享受额外优惠，还能获得佣金返利。</description>
+    <pubDate>Sun, 10 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (Tails Azimuth)</author>
+    <category>购物，双 11</category><category>淘宝联盟，京东联盟</category>
+  </item>
+
   <item>
     <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/release-of-tailwind-nextjs-starter-blog-v2.0</guid>
     <title>Release of Tailwind Nextjs Starter Blog v2.0</title>

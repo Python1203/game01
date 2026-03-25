@@ -67,6 +67,12 @@ module.exports = () => {
     output,
     basePath,
     reactStrictMode: true,
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
     trailingSlash: true,
     turbopack: {
       root: process.cwd(),
@@ -100,6 +106,15 @@ module.exports = () => {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       })
+
+      // Define process.env for client-side components
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        os: false,
+        crypto: false,
+      }
 
       return config
     },

@@ -98,6 +98,15 @@ const siteMetadata = {
     //   indexName: 'docsearch',
     // },
   },
+  affiliate: {
+    // 联盟营销配置
+    // 京东联盟 PID (格式：xxxxx_xxxx_xxxx)
+    jd_pid: process.env.NEXT_PUBLIC_JD_PID || 'xxxxx_xxxx_xxxx',
+    // 淘宝联盟推广位 ID (格式：mm_xxxx_xxxx_xxxx)
+    tb_pub_id: process.env.NEXT_PUBLIC_TB_PUB_ID || 'mm_xxxx_xxxx_xxxx',
+    // 默认移动端偏好 (可选：'jd' | 'tb')
+    mobile_preference: 'tb',
+  },
 }
 
 module.exports = siteMetadata
