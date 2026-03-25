@@ -1,52 +1,50 @@
-name: Deploy to GitHub Pages (DISABLED)
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main  # 或者你的主分支名称
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    if: false  # Disabled - using GitHub Pages native deployment
-    concurrency:
-      group: pages
-      cancel-in-progress: true
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: true
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'yarn'
-
-      - name: Setup Git
-        run: |
-          git config --global user.name "Python1203"
-          git config --global user.email "python1203@example.com"
-
+          
       - name: Install dependencies
-        run: |
-          cd game-blog
-          yarn install
-
-      - name: Build project
-        run: |
-          cd game-blog
-          export EXPORT=true
-          yarn build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        run: yarn install
+        
+      - name: Build
+        run: yarn build
+        env:
+          EXPORT: 'true'
+          
+      - name: Copy CNAME
+        run: cp CNAME out/
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./game-blog/out
-          publish_branch: gh-pages
-          allow_empty_commit: false
-          enable_jekyll: false
+          path: './out'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
