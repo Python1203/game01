@@ -13,9 +13,8 @@ set -u  # 使用未定义变量时退出
 
 # 定义变量
 PROJECT_ROOT="/Users/zzw868/PycharmProjects/PythonProject"
-GAME_BLOG_DIR="$PROJECT_ROOT/game-blog"
 CNAME_FILE="$PROJECT_ROOT/CNAME"
-OUTPUT_DIR="$GAME_BLOG_DIR/out"
+OUTPUT_DIR="$PROJECT_ROOT/out"
 BRANCH_NAME="gh-pages"
 
 log() {
@@ -39,9 +38,9 @@ info() {
 deploy() {
     log "开始自动化部署流程"
     
-    # 进入game-blog目录
-    cd "$GAME_BLOG_DIR"
-    log "进入项目目录: $GAME_BLOG_DIR"
+    # 进入项目根目录
+    cd "$PROJECT_ROOT"
+    log "进入项目目录：$PROJECT_ROOT"
     
     # 清理之前的构建文件
     if [ -d "$OUTPUT_DIR" ]; then
@@ -75,21 +74,21 @@ deploy() {
     
     log "部署准备就绪"
     echo ""
-    info "📌 部署文件位置: $OUTPUT_DIR"
-    info "🌐 访问地址: http://869.us.ci"
+    info "📌 部署文件位置：$OUTPUT_DIR"
+    info "🌐 访问地址：http://869.us.ci"
     echo ""
     
     # 提供部署选项
-    cat << "EOF"
+    cat << EOF
 🚀 部署选项：
 1. GitHub Pages (推荐):
-   git subtree push --prefix=game-blog/out origin gh-pages
+   git subtree push --prefix=out origin gh-pages
 
 2. 手动部署:
-   将out目录中的所有文件上传到您的服务器
+   将 out 目录中的所有文件上传到您的服务器
 
 3. 本地预览:
-   npx serve -s game-blog/out
+   npx serve -s out
 EOF
 }
 
