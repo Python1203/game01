@@ -2,18 +2,18 @@
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>Next.js Starter Blog - Updated</title>
-      <link>https://tailwind-nextjs-starter-blog.vercel.app/blog</link>
+      <link>https://869.us.ci/blog</link>
       <description>A blog created with Next.js and Tailwind.css</description>
       <language>en-us</language>
       <managingEditor>address@yoursite.com (Tails Azimuth)</managingEditor>
       <webMaster>address@yoursite.com (Tails Azimuth)</webMaster>
       <lastBuildDate>Tue, 26 Nov 2024 00:00:00 GMT</lastBuildDate>
-      <atom:link href="https://tailwind-nextjs-starter-blog.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://869.us.ci/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/alliance-auto-promote</guid>
+    <guid>https://869.us.ci/blog/alliance-auto-promote</guid>
     <title>淘宝京东联盟自动推荐系统实战</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/alliance-auto-promote</link>
+    <link>https://869.us.ci/blog/alliance-auto-promote</link>
     <description>完整实现淘宝京东联盟商品自动获取、转链和展示的 React 组件系统</description>
     <pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -21,9 +21,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/taobao-token-demo</guid>
+    <guid>https://869.us.ci/blog/taobao-token-demo</guid>
     <title>淘口令自动复制功能演示</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/taobao-token-demo</link>
+    <link>https://869.us.ci/blog/taobao-token-demo</link>
     <description>演示在微信环境中自动复制淘口令并弹出提示的 React 组件</description>
     <pubDate>Mon, 25 Nov 2024 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -31,9 +31,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/middleware-test</guid>
+    <guid>https://869.us.ci/blog/middleware-test</guid>
     <title>Middleware 跳转测试页面</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/middleware-test</link>
+    <link>https://869.us.ci/blog/middleware-test</link>
     <description>用于测试 Next.js Middleware 的极速跳转功能</description>
     <pubDate>Wed, 20 Nov 2024 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -41,9 +41,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/digital-products-roundup</guid>
+    <guid>https://869.us.ci/blog/digital-products-roundup</guid>
     <title>数码控必备 - 高性价比电子产品推荐清单</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/digital-products-roundup</link>
+    <link>https://869.us.ci/blog/digital-products-roundup</link>
     <description>精选 3C 数码产品，从手机到配件，全方位满足你的科技需求。支持按平台筛选、价格排序。</description>
     <pubDate>Fri, 15 Nov 2024 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -51,9 +51,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/affiliate-shopping-guide</guid>
+    <guid>https://869.us.ci/blog/affiliate-shopping-guide</guid>
     <title>2024 年双 11 购物攻略 - 淘宝京东必买好物推荐</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/affiliate-shopping-guide</link>
+    <link>https://869.us.ci/blog/affiliate-shopping-guide</link>
     <description>双 11 购物节来了！精选淘宝和京东超值好物，使用专属链接享受额外优惠，还能获得佣金返利。</description>
     <pubDate>Sun, 10 Nov 2024 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -61,9 +61,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/release-of-tailwind-nextjs-starter-blog-v2.0</guid>
+    <guid>https://869.us.ci/blog/release-of-tailwind-nextjs-starter-blog-v2.0</guid>
     <title>Release of Tailwind Nextjs Starter Blog v2.0</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/release-of-tailwind-nextjs-starter-blog-v2.0</link>
+    <link>https://869.us.ci/blog/release-of-tailwind-nextjs-starter-blog-v2.0</link>
     <description>Release of Tailwind Nextjs Starter Blog template v2.0, refactored with Nextjs App directory and React Server Components setup.Discover the new features and how to migrate from V1.</description>
     <pubDate>Sat, 05 Aug 2023 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -71,9 +71,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/new-features-in-v1</guid>
+    <guid>https://869.us.ci/blog/new-features-in-v1</guid>
     <title>New features in v1</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/new-features-in-v1</link>
+    <link>https://869.us.ci/blog/new-features-in-v1</link>
     <description>An overview of the new features released in v1 - code block copy, multiple authors, frontmatter layout and more</description>
     <pubDate>Sat, 07 Aug 2021 15:32:14 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -81,9 +81,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing</guid>
+    <guid>https://869.us.ci/blog/nested-route/introducing-multi-part-posts-with-nested-routing</guid>
     <title>Introducing Multi-part Posts with Nested Routing</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing</link>
+    <link>https://869.us.ci/blog/nested-route/introducing-multi-part-posts-with-nested-routing</link>
     <description>The blog template supports posts in nested sub-folders. This can be used to group posts of similar content e.g. a multi-part course. This post is itself an example of a nested route!</description>
     <pubDate>Sun, 02 May 2021 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -91,9 +91,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog</guid>
+    <guid>https://869.us.ci/blog/introducing-tailwind-nextjs-starter-blog</guid>
     <title>Introducing Tailwind Nextjs Starter Blog</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog</link>
+    <link>https://869.us.ci/blog/introducing-tailwind-nextjs-starter-blog</link>
     <description>Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.</description>
     <pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -101,9 +101,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/deriving-ols-estimator</guid>
+    <guid>https://869.us.ci/blog/deriving-ols-estimator</guid>
     <title>Deriving the OLS Estimator</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/deriving-ols-estimator</link>
+    <link>https://869.us.ci/blog/deriving-ols-estimator</link>
     <description>How to derive the OLS Estimator with matrix notation and a tour of math typesetting using markdown with the help of KaTeX.</description>
     <pubDate>Mon, 21 Dec 2020 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -111,9 +111,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/guide-to-using-images-in-nextjs</guid>
+    <guid>https://869.us.ci/blog/guide-to-using-images-in-nextjs</guid>
     <title>Images in Next.js</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/guide-to-using-images-in-nextjs</link>
+    <link>https://869.us.ci/blog/guide-to-using-images-in-nextjs</link>
     <description>In this article we introduce adding images in the tailwind starter blog and the benefits and limitations of the next/image component.</description>
     <pubDate>Wed, 11 Nov 2020 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -121,9 +121,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/github-markdown-guide</guid>
+    <guid>https://869.us.ci/blog/github-markdown-guide</guid>
     <title>Markdown Guide</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/github-markdown-guide</link>
+    <link>https://869.us.ci/blog/github-markdown-guide</link>
     <description>Markdown cheatsheet for all your blogging needs - headers, lists, images, tables and more! An illustrated guide based on GitHub Flavored Markdown.</description>
     <pubDate>Fri, 11 Oct 2019 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -131,9 +131,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine</guid>
+    <guid>https://869.us.ci/blog/the-time-machine</guid>
     <title>The Time Machine</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine</link>
+    <link>https://869.us.ci/blog/the-time-machine</link>
     <description>The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. His pale grey eyes shone and twinkled, and his usually pale face was flushed and animated...</description>
     <pubDate>Wed, 15 Aug 2018 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -141,9 +141,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/pictures-of-canada</guid>
+    <guid>https://869.us.ci/blog/pictures-of-canada</guid>
     <title>O Canada</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/pictures-of-canada</link>
+    <link>https://869.us.ci/blog/pictures-of-canada</link>
     <description>The scenic lands of Canada featuring maple leaves, snow-capped mountains, turquoise lakes and Toronto. Take in the sights in this photo gallery exhibition and see how easy it is to replicate with some MDX magic and tailwind classes.</description>
     <pubDate>Sat, 15 Jul 2017 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
@@ -151,9 +151,9 @@
   </item>
 
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/code-sample</guid>
+    <guid>https://869.us.ci/blog/code-sample</guid>
     <title>Sample .md file</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/code-sample</link>
+    <link>https://869.us.ci/blog/code-sample</link>
     <description>Example of a markdown file with code blocks and syntax highlighting</description>
     <pubDate>Tue, 08 Mar 2016 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
