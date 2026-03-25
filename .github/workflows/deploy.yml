@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: false  # Temporarily disabled
+    if: false  # Disabled - using GitHub Pages native deployment
     concurrency:
       group: pages
       cancel-in-progress: true
