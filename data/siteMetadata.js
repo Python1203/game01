@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Next.js Starter Blog - Updated',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: '888 Technology Studio - 技术创新与数字化转型',
+  author: '888',
+  headerTitle: '888 Blog',
+  description: '专注于技术创新和数字化转型领域，分享现代 Web 应用开发、系统设计和开源贡献的实践经验。',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://869.us.ci',
@@ -13,16 +13,16 @@ const siteMetadata = {
   socialBanner: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
-  github: 'https://github.com',
   x: 'https://twitter.com/x',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/in/zzw868',
   threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com',
   medium: 'https://medium.com',
   bluesky: 'https://bsky.app/',
+  github: 'https://github.com/Python1203',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
