@@ -1,21 +1,10 @@
 'use client'
 
+import '@/lib/process-polyfill'
 import 'css/prism.css'
 import 'katex/dist/katex.css'
 
 import { useEffect } from 'react'
-
-// Polyfill for process.env to support pliny/mdx-components
-// Initialize process.env on client side only to avoid hydration errors
-function initProcessEnv() {
-  if (typeof window !== 'undefined' && !(window as any).process) {
-    ;(window as any).process = {
-      env: {
-        NODE_ENV: 'development',
-      },
-    }
-  }
-}
 
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
@@ -39,10 +28,7 @@ interface BlogPostClientProps {
 }
 
 export default function BlogPostClient({ post, authorDetails, next, prev }: BlogPostClientProps) {
-  // Setup process.env polyfill on mount
-  useEffect(() => {
-    initProcessEnv()
-  }, [])
+  // Remove the useEffect hook since we initialize process.env at module level
 
   const jsonLd = post.structuredData
   jsonLd['author'] = authorDetails.map((author) => {

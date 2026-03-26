@@ -8,8 +8,8 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  siteLogo: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/logo.png`,
+  socialBanner: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
   github: 'https://github.com',
@@ -87,7 +87,7 @@ const siteMetadata = {
   search: {
     provider: 'kbar', // kbar or algolia
     kbarConfig: {
-      searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`, // path to load documents to search
+      searchDocumentsPath: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/search.json`, // path to load documents to search
     },
     // provider: 'algolia',
     // algoliaConfig: {

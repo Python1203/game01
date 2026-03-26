@@ -1,5 +1,7 @@
 'use client'
 
+import '@/lib/process-polyfill'
+
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
