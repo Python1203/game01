@@ -73,7 +73,6 @@ const MobileNav = () => {
           open={navShow}
           onClose={onToggleNav}
           unmount={false}
-          suppressHydrationWarning
           className="relative z-50"
         >
           <TransitionChild
