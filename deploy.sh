@@ -54,6 +54,12 @@ deploy() {
     yarn build || error "构建失败"
     log "项目构建完成"
     
+    # 清理中文命名的目录（Next.js 静态导出会产生重复的中文和 URL 编码目录）
+    # 只保留 URL 编码的目录以避免客户端预取 404 错误
+    info "清理冗余的中文目录..."
+    python3 "$PROJECT_ROOT/scripts/clean-chinese-dirs.py" "$PROJECT_ROOT"
+    log "中文目录清理完成"
+    
     # 验证输出目录
     if [ ! -d "$OUTPUT_DIR" ]; then
         error "构建失败：输出目录不存在"

@@ -6,8 +6,9 @@ const siteMetadata = {
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://869.us.ci',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  // Use injected env variables from webpack DefinePlugin for static export compatibility
   siteLogo: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',

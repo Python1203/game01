@@ -11,6 +11,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import '@/lib/process-polyfill'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -59,7 +60,8 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+  // Use injected process.env value from webpack DefinePlugin for static export compatibility
+  const basePath = (process.env.NEXT_PUBLIC_BASE_PATH as string) || ''
 
   return (
     <html
