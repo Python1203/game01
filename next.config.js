@@ -116,6 +116,24 @@ module.exports = () => {
         crypto: false,
       }
 
+      // Polyfill process.env for static export
+      config.plugins.push(
+        new options.webpack.DefinePlugin({
+          'process.env.NEXT_PUBLIC_JD_PID': JSON.stringify(process.env.NEXT_PUBLIC_JD_PID || ''),
+          'process.env.NEXT_PUBLIC_JD_POSITION_ID': JSON.stringify(process.env.NEXT_PUBLIC_JD_POSITION_ID || ''),
+          'process.env.NEXT_PUBLIC_JD_APP_KEY': JSON.stringify(process.env.NEXT_PUBLIC_JD_APP_KEY || ''),
+          'process.env.NEXT_PUBLIC_TAOBAO_PID': JSON.stringify(process.env.NEXT_PUBLIC_TAOBAO_PID || ''),
+          'process.env.NEXT_PUBLIC_TAOBAO_UNION_ID': JSON.stringify(process.env.NEXT_PUBLIC_TAOBAO_UNION_ID || ''),
+          'process.env.NEXT_PUBLIC_TAOBAO_ADZONE_ID': JSON.stringify(process.env.NEXT_PUBLIC_TAOBAO_ADZONE_ID || ''),
+          'process.env.BASE_PATH': JSON.stringify(process.env.BASE_PATH || ''),
+          'process.env.NEXT_UMAMI_ID': JSON.stringify(process.env.NEXT_UMAMI_ID || ''),
+          'process.env.NEXT_PUBLIC_GISCUS_REPO': JSON.stringify(process.env.NEXT_PUBLIC_GISCUS_REPO || ''),
+          'process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID': JSON.stringify(process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID || ''),
+          'process.env.NEXT_PUBLIC_GISCUS_CATEGORY': JSON.stringify(process.env.NEXT_PUBLIC_GISCUS_CATEGORY || ''),
+          'process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID': JSON.stringify(process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID || ''),
+        })
+      )
+
       return config
     },
   })
