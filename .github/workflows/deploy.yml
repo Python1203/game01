@@ -26,6 +26,7 @@ jobs:
         run: yarn build
         env:
           EXPORT: 'true'
+          BASE_PATH: ''
           
       - name: Copy CNAME
         run: cp CNAME out/
