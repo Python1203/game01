@@ -68,10 +68,10 @@ module.exports = () => {
     basePath,
     reactStrictMode: true,
     eslint: {
-      ignoreDuringBuilds: true,
+      ignoreDuringBuilds: false,
     },
     typescript: {
-      ignoreBuildErrors: true,
+      ignoreBuildErrors: false,
     },
     trailingSlash: true,
     turbopack: {
