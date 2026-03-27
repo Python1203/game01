@@ -40,6 +40,8 @@ jobs:
             echo "Chinese dir contents:"
             ls "out/tags/%E6%95%B0%E7%A0%81%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/"
           fi
+      - name: Copy CNAME
+        run: cp CNAME out/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
