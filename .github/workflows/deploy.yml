@@ -3,50 +3,31 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 或者你的主分支名称
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'yarn'
-          
+      - id: configurepages
+        uses: actions/configure-pages@v6
       - name: Install dependencies
-        run: yarn install
-        
-      - name: Build
+        run: yarn install --frozen-lockfile
+      - name: Build with Next.js
         run: yarn build
         env:
           EXPORT: 'true'
+          UNOPTIMIZED: 'true'
           BASE_PATH: ''
           NEXT_PUBLIC_BASE_PATH: ''
-          
       - name: Verify build output
         run: |
-          echo "Checking out directory structure..."
-          ls -la out/
-          echo "Checking _next/static files..."
-          find out/_next/static -type f | wc -l
-          echo "Sample files:"
-          find out/_next/static -type f | head -10
-          echo "Checking tags directories..."
-          find out/tags -name "index.txt" | wc -l
-          echo "Chinese tag dirs:"
-          find out/tags -type d -name "%E*" | wc -l
-          
-      - name: Copy CNAME
-        run: cp CNAME out/
-        
-      - name: Verify all files before upload
-        run: |
+          echo "=== Build Output Verification ==="
           echo "Total files in out directory:"
           find out -type f | wc -l
           echo "HTML files count:"
@@ -55,17 +36,13 @@ jobs:
           find out -name "*.txt" | wc -l
           echo "Checking Chinese directories exist:"
           ls -d out/tags/%E* 2>/dev/null | wc -l || echo "No encoded dirs found"
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
+          if [ -d "out/tags/%E6%95%B0%E7%A0%81%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90" ]; then
+            echo "Chinese dir contents:"
+            ls "out/tags/%E6%95%B0%E7%A0%81%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E5%A5%BD%E7%89%A9%E6%8E%A8%E8%8D%90/"
+          fi
+      - uses: actions/upload-pages-artifact@v3
         with:
-          static_site_generator: next
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './out'
-          retention-days: 1
+          path: ./out
 
   deploy:
     environment:
@@ -74,6 +51,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
