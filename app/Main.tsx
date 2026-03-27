@@ -19,10 +19,8 @@ export default function Home({ posts }) {
     setMounted(true)
   }, [])
 
-  // 防止水合错误：在客户端挂载后再渲染动态内容
-  if (!mounted) {
-    return null
-  }
+  // 服务端和客户端都渲染相同的内容，避免水合错误
+  // 只在客户端添加交互功能
   return (
     <>
       {/* Welcome Section */}
