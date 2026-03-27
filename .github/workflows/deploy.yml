@@ -37,6 +37,10 @@ jobs:
           find out/_next/static -type f | wc -l
           echo "Sample files:"
           find out/_next/static -type f | head -10
+          echo "Checking tags directories..."
+          find out/tags -name "index.txt" | wc -l
+          echo "Chinese tag dirs:"
+          find out/tags -type d -name "%E*" | wc -l
           
       - name: Copy CNAME
         run: cp CNAME out/
