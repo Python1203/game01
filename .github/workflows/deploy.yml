@@ -29,6 +29,15 @@ jobs:
           BASE_PATH: ''
           NEXT_PUBLIC_BASE_PATH: ''
           
+      - name: Verify build output
+        run: |
+          echo "Checking out directory structure..."
+          ls -la out/
+          echo "Checking _next/static files..."
+          find out/_next/static -type f | wc -l
+          echo "Sample files:"
+          find out/_next/static -type f | head -10
+          
       - name: Copy CNAME
         run: cp CNAME out/
         
@@ -41,6 +50,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './out'
+          retention-days: 1
 
   deploy:
     environment:
