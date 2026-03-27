@@ -5,6 +5,11 @@ import { useEffect, useState } from 'react'
 
 const ScrollTopAndComment = () => {
   const [show, setShow] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleWindowScroll = () => {
@@ -22,6 +27,12 @@ const ScrollTopAndComment = () => {
   const handleScrollToComment = () => {
     document.getElementById('comment')?.scrollIntoView()
   }
+  
+  // 避免服务端和客户端渲染不一致
+  if (!mounted) {
+    return null
+  }
+  
   return (
     <div
       className={`fixed right-8 bottom-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
