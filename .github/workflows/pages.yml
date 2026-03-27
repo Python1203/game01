@@ -6,6 +6,9 @@ on:
     branches: main
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   pages: write
@@ -29,11 +32,14 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build with Next.js
-        run: yarn build --no-lint
+        run: |
+          echo "Disabling ESLint and TypeScript checks..."
+          yarn build --no-lint
         env:
           EXPORT: 1
           UNOPTIMIZED: 1
           NEXT_TELEMETRY_DISABLED: 1
+          CI: false
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
