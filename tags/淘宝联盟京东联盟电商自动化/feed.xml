@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>888 Technology Studio - 技术创新与数字化转型</title>
+      <link>https://869.us.ci/blog</link>
+      <description>专注于技术创新和数字化转型领域，分享现代 Web 应用开发、系统设计和开源贡献的实践经验。</description>
+      <language>en-us</language>
+      <managingEditor>address@yoursite.com (888)</managingEditor>
+      <webMaster>address@yoursite.com (888)</webMaster>
+      <lastBuildDate>Tue, 26 Nov 2024 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://869.us.ci/tags/淘宝联盟京东联盟电商自动化/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://869.us.ci/blog/nested-route/alliance-auto-promote</guid>
+    <title>淘宝京东联盟自动推荐系统实战</title>
+    <link>https://869.us.ci/blog/nested-route/alliance-auto-promote</link>
+    <description>完整实现淘宝京东联盟商品自动获取、转链和展示的 React 组件系统</description>
+    <pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (888)</author>
+    <category>淘宝联盟，京东联盟，电商，自动化</category>
+  </item>
+
+    </channel>
+  </rss>
