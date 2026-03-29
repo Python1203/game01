@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>888 Technology Studio - 技术创新与数字化转型</title>
+      <link>https://869.us.ci/blog</link>
+      <description>专注于技术创新和数字化转型领域，分享现代 Web 应用开发、系统设计和开源贡献的实践经验。</description>
+      <language>en-us</language>
+      <managingEditor>address@yoursite.com (888)</managingEditor>
+      <webMaster>address@yoursite.com (888)</webMaster>
+      <lastBuildDate>Fri, 11 Oct 2019 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://869.us.ci/tags/github/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://869.us.ci/blog/nested-route/github-markdown-guide</guid>
+    <title>Markdown Guide</title>
+    <link>https://869.us.ci/blog/nested-route/github-markdown-guide</link>
+    <description>Markdown cheatsheet for all your blogging needs - headers, lists, images, tables and more! An illustrated guide based on GitHub Flavored Markdown.</description>
+    <pubDate>Fri, 11 Oct 2019 00:00:00 GMT</pubDate>
+    <author>address@yoursite.com (888)</author>
+    <category>github</category><category>guide</category>
+  </item>
+
+    </channel>
+  </rss>
