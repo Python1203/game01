@@ -18,12 +18,12 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Build with Next.js
+           - name: Build with Next.js
         run: yarn build
         env:
           EXPORT: 'true'
           UNOPTIMIZED: 'true'
-          BASE_PATH: ''
+          # 将 BASE_PATH 重命名为 NEXT_PUBLIC_BASE_PATH
           NEXT_PUBLIC_BASE_PATH: ''
       - name: Verify build output
         run: |
