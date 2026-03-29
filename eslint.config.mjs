@@ -14,7 +14,14 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['next-env.d.ts', 'next.config.js'],
+    ignores: [
+      'next-env.d.ts',
+      'next.config.js',
+      'out/**/*',
+      '.next/**/*',
+      'node_modules/**/*',
+      '*.min.js',
+    ],
   },
   js.configs.recommended,
   ...compat.extends(
@@ -50,6 +57,8 @@ export default [
     rules: {
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
+      // Ignore Next.js specific rules that may trigger on bundled code
+      '@next/next/no-assign-module-variable': 'off',
 
       'jsx-a11y/anchor-is-valid': [
         'error',
