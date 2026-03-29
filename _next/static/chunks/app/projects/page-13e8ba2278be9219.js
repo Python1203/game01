@@ -1,18 +1,18 @@
 ;(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
   [893],
   {
-    7147: (_, I, x) => {
-      ;(Promise.resolve().then(x.bind(x, 7613)), Promise.resolve().then(x.t.bind(x, 2619, 23)))
+    7147: (_, I, E) => {
+      ;(Promise.resolve().then(E.bind(E, 7613)), Promise.resolve().then(E.t.bind(E, 2619, 23)))
     },
-    7613: (_, I, x) => {
+    7613: (_, I, E) => {
       'use strict'
-      x.d(I, { default: () => e })
-      var E = x(5155)
-      x(8244)
-      var P = x(5239)
-      let e = (_) => {
-        let { src: I, ...x } = _
-        return (0, E.jsx)(P.default, { src: ''.concat('').concat(I), ...x })
+      E.d(I, { default: () => N })
+      var P = E(5155)
+      E(8244)
+      var e = E(5239)
+      let N = (_) => {
+        let { src: I, ...E } = _
+        return (0, P.jsx)(e.default, { src: ''.concat('').concat(I), ...E })
       }
     },
     8244: () => {
@@ -22,7 +22,7 @@
           env: {
             NODE_ENV: 'production',
             NEXT_PUBLIC_BASE_PATH: '',
-            NEXT_PUBLIC_JD_PID: 'xxxxx_xxxx_xxxx',
+            NEXT_PUBLIC_JD_PID: '',
             NEXT_PUBLIC_JD_POSITION_ID: '',
             NEXT_PUBLIC_JD_APP_KEY: '',
             NEXT_PUBLIC_TAOBAO_PID: '',

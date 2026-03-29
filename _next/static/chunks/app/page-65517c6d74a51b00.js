@@ -564,7 +564,7 @@
           env: {
             NODE_ENV: 'production',
             NEXT_PUBLIC_BASE_PATH: '',
-            NEXT_PUBLIC_JD_PID: 'xxxxx_xxxx_xxxx',
+            NEXT_PUBLIC_JD_PID: '',
             NEXT_PUBLIC_JD_POSITION_ID: '',
             NEXT_PUBLIC_JD_APP_KEY: '',
             NEXT_PUBLIC_TAOBAO_PID: '',

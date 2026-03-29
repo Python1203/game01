@@ -110,7 +110,7 @@
         d = r(2115),
         c = r(5704)
       let x = { pid: '' },
-        p = { pid: 'xxxxx_xxxx_xxxx', unionId: c.env.NEXT_PUBLIC_JD_UNION_ID }
+        p = { pid: '', unionId: c.env.NEXT_PUBLIC_JD_UNION_ID }
       function m() {
         let e = navigator.userAgent.toLowerCase(),
           t = /micromessenger/i.test(e),
@@ -1237,8 +1237,8 @@
         N = r(9086),
         k = r(1146),
         C = r(744),
-        _ = r.n(C)
-      function S(e) {
+        S = r.n(C)
+      function _(e) {
         var t
         let { slug: r } = e,
           [o, i] = (0, d.useState)(!1),
@@ -1246,10 +1246,10 @@
         return ((0, d.useEffect)(() => {
           i(!0)
         }, []),
-        (null == (t = _().comments) ? void 0 : t.provider) && o)
+        (null == (t = S().comments) ? void 0 : t.provider) && o)
           ? (0, a.jsx)(a.Fragment, {
               children: l
-                ? (0, a.jsx)(k.Hw, { commentsConfig: _().comments, slug: r })
+                ? (0, a.jsx)(k.Hw, { commentsConfig: S().comments, slug: r })
                 : (0, a.jsx)('button', { onClick: () => s(!0), children: 'Load Comments' }),
             })
           : null
@@ -1291,7 +1291,7 @@
                 t ? 'md:flex' : 'md:hidden'
               ),
               children: [
-                (null == (e = _().comments) ? void 0 : e.provider) &&
+                (null == (e = S().comments) ? void 0 : e.provider) &&
                   (0, a.jsx)('button', {
                     'aria-label': 'Scroll To Comment',
                     onClick: () => {
@@ -1363,7 +1363,7 @@
                                     'text-base leading-6 font-medium text-gray-500 dark:text-gray-400',
                                   children: (0, a.jsx)('time', {
                                     dateTime: d,
-                                    children: (0, N.Y)(d, _().locale),
+                                    children: (0, N.Y)(d, S().locale),
                                   }),
                                 }),
                               ],
@@ -1385,11 +1385,11 @@
                             children: i,
                           }),
                         }),
-                        _().comments &&
+                        S().comments &&
                           (0, a.jsx)('div', {
                             className: 'pt-6 pb-6 text-center text-gray-700 dark:text-gray-300',
                             id: 'comment',
-                            children: (0, a.jsx)(S, { slug: s }),
+                            children: (0, a.jsx)(_, { slug: s }),
                           }),
                         (0, a.jsx)('footer', {
                           children: (0, a.jsxs)('div', {
@@ -1460,7 +1460,7 @@
                                     'text-base leading-6 font-medium text-gray-500 dark:text-gray-400',
                                   children: (0, a.jsx)('time', {
                                     dateTime: p,
-                                    children: new Date(p).toLocaleDateString(_().locale, P),
+                                    children: new Date(p).toLocaleDateString(S().locale, P),
                                   }),
                                 }),
                               ],
@@ -1549,23 +1549,23 @@
                               children: [
                                 (0, a.jsx)(n.A, {
                                   href: 'https://mobile.twitter.com/search?q='.concat(
-                                    encodeURIComponent(''.concat(_().siteUrl, '/').concat(c))
+                                    encodeURIComponent(''.concat(S().siteUrl, '/').concat(c))
                                   ),
                                   rel: 'nofollow',
                                   children: 'Discuss on Twitter',
                                 }),
                                 ' • ',
                                 (0, a.jsx)(n.A, {
-                                  href: ''.concat(_().siteRepo, '/blob/main/data/').concat(d),
+                                  href: ''.concat(S().siteRepo, '/blob/main/data/').concat(d),
                                   children: 'View on GitHub',
                                 }),
                               ],
                             }),
-                            _().comments &&
+                            S().comments &&
                               (0, a.jsx)('div', {
                                 className: 'pt-6 pb-6 text-center text-gray-700 dark:text-gray-300',
                                 id: 'comment',
-                                children: (0, a.jsx)(S, { slug: x }),
+                                children: (0, a.jsx)(_, { slug: x }),
                               }),
                           ],
                         }),
@@ -1694,11 +1694,11 @@
                       className: 'prose dark:prose-invert max-w-none py-4',
                       children: i,
                     }),
-                    _().comments &&
+                    S().comments &&
                       (0, a.jsx)('div', {
                         className: 'pt-6 pb-6 text-center text-gray-700 dark:text-gray-300',
                         id: 'comment',
-                        children: (0, a.jsx)(S, { slug: l }),
+                        children: (0, a.jsx)(_, { slug: l }),
                       }),
                     (0, a.jsx)('footer', {
                       children: (0, a.jsxs)('div', {
@@ -1784,7 +1784,7 @@
           env: {
             NODE_ENV: 'production',
             NEXT_PUBLIC_BASE_PATH: '',
-            NEXT_PUBLIC_JD_PID: 'xxxxx_xxxx_xxxx',
+            NEXT_PUBLIC_JD_PID: '',
             NEXT_PUBLIC_JD_POSITION_ID: '',
             NEXT_PUBLIC_JD_APP_KEY: '',
             NEXT_PUBLIC_TAOBAO_PID: '',
