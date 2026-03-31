@@ -1,0 +1,36 @@
+name: Trigger Vercel Deploy
+
+on:
+  schedule:
+    # 每 6 小时执行一次 (UTC 时间)
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    # 允许手动触发
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: |
+          echo "🚀 开始触发 Vercel 部署..."
+          
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK }}" ]; then
+            echo "❌ 错误：未设置 VERCEL_DEPLOY_HOOK secret"
+            exit 1
+          fi
+          
+          response=$(curl -X POST -s -o /dev/null -w "%{http_code}" "${{ secrets.VERCEL_DEPLOY_HOOK }}")
+          
+          if [ "$response" = "200" ] || [ "$response" = "201" ]; then
+            echo "✅ 部署触发成功！HTTP Status: $response"
+          else
+            echo "⚠️ 部署触发失败！HTTP Status: $response"
+            exit 1
+          fi
+      
+      - name: 显示执行时间
+        run: |
+          echo "当前时间：$(date)"
+          echo "下次执行时间：约 6 小时后"

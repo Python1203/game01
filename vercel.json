@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "buildCommand": "cd vercel-money-factory && npm install && npx astro build",
+  "outputDirectory": "vercel-money-factory/dist",
+  "framework": "astro"
+}
