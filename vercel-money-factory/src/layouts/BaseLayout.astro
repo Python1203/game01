@@ -55,12 +55,41 @@ const jsonLd = {
   </head>
   <body>
     <header>
-      <nav>
-        <a href="/">🏠 Home</a>
-        <span>|</span>
-        <a href="/crypto/btc">BTC</a>
-        <a href="/crypto/eth">ETH</a>
-        <a href="/crypto/sol">SOL</a>
+      <nav class="top-nav">
+        <a href="/" class="nav-home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">首页</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#crypto" class="nav-link">
+          <span class="nav-icon">₿</span>
+          <span class="nav-label">加密货币</span>
+        </a>
+        <a href="#football" class="nav-link">
+          <span class="nav-icon">⚽</span>
+          <span class="nav-label">足球预测</span>
+        </a>
+        <a href="#stocks" class="nav-link">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">美股分析</span>
+        </a>
+        <a href="#etf" class="nav-link">
+          <span class="nav-icon">💼</span>
+          <span class="nav-label">ETF 分析</span>
+        </a>
+        <a href="#indices" class="nav-link">
+          <span class="nav-icon">🌍</span>
+          <span class="nav-label">全球指数</span>
+        </a>
+        <a href="/donate" class="nav-link">
+          <span class="nav-icon">💎</span>
+          <span class="nav-label">捐赠支持</span>
+        </a>
+        <div class="nav-spacer"></div>
+        <a href="/go/telegram" class="nav-link nav-vip">
+          <span class="nav-icon">✈️</span>
+          <span class="nav-label">VIP 频道</span>
+        </a>
       </nav>
     </header>
 
@@ -89,21 +118,86 @@ const jsonLd = {
   }
 
   header {
-    background: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 2rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   }
 
-  nav a {
-    color: #2563eb;
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
     text-decoration: none;
-    margin-right: 0.5rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
   }
 
-  nav a:hover {
-    text-decoration: underline;
+  .nav-home:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .nav-vip {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  }
+
+  .nav-vip:hover {
+    background: linear-gradient(135deg, #FFC700, #FF9500);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6);
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 0.5rem;
+  }
+
+  .nav-spacer {
+    flex: 1;
+  }
+
+  .nav-icon {
+    font-size: 1.1em;
+  }
+
+  .nav-label {
+    font-size: 0.95rem;
   }
 
   main {

@@ -10,7 +10,95 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0; text-align: center; }
+        
+        /* 优化的导航栏样式 */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 20px;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-brand:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .nav-divider {
+            width: 1px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 0.25rem;
+        }
+        
+        .nav-vip {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        }
+        
+        .nav-vip:hover {
+            background: linear-gradient(135deg, #FFC700, #FF9500);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 6);
+        }
+        
+        .nav-icon {
+            font-size: 1.1em;
+        }
+        
         h1 { font-size: 2.5em; margin-bottom: 10px; }
         .subtitle { font-size: 1.2em; opacity: 0.9; }
         .section { margin: 40px 0; }
@@ -28,11 +116,55 @@
         .badge-stock { background: #e3f2fd; color: #1976d2; }
         .badge-crypto { background: #f3e5f5; color: #7b1fa2; }
         .badge-casino { background: #fff3e0; color: #f57c00; }
+        
+        /* 捐赠卡片样式 */
+        #donation .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        #donation a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <span class="nav-icon">🚀</span>
+                <span>热门投资信号</span>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#stock" class="nav-link">
+                    <span class="nav-icon">📈</span>
+                    <span>股票</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#crypto" class="nav-link">
+                    <span class="nav-icon">₿</span>
+                    <span>加密货币</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#casino" class="nav-link">
+                    <span class="nav-icon">🎰</span>
+                    <span>博彩推荐</span>
+                </a>
+                <div class="nav-divider"></div>
+                <a href="#donation" class="nav-link">
+                    <span class="nav-icon">💎</span>
+                    <span>捐赠支持</span>
+                </a>
+                <div class="nav-spacer" style="flex: 1;"></div>
+                <a href="https://869.us.ci/go/telegram" class="nav-link nav-vip">
+                    <span class="nav-icon">✈️</span>
+                    <span>VIP 频道</span>
+                </a>
+            </nav>
+        </div>
+        
+        <!-- 英雄横幅区域 -->
+        <div style="text-align: center; padding: 3rem 20px;">
             <h1>🚀 热门投资信号</h1>
             <p class="subtitle">AI 驱动的 Stock/Crypto/Casino 智能分析平台</p>
             <p style="margin-top: 15px; opacity: 0.8;">更新时间：2026-03-31 13:27</p>
@@ -135,6 +267,176 @@
                 <p style="color: #999; padding: 20px;">暂无文章</p>
             </div>
         </section>
+        
+        <!-- 捐赠与赞助 -->
+        <section class="section" id="donation">
+            <h2 class="section-title" style="border-bottom-color: #f59e0b;">💎 捐赠与赞助 - 支持本站运营</h2>
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 30px; margin: 20px 0; border: 2px solid #f59e0b;">
+                <h3 style="color: #92400e; margin-bottom: 15px; font-size: 1.5em;">支持 888 博客运营，接受 BTC/XMR/LTC 等加密货币捐赠</h3>
+                <p style="color: #78350f; font-size: 1.1em; margin-bottom: 20px;">透明财务，隐私保护，多种赞助等级和奖励计划</p>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 8px; margin-top: 20px;">
+                    <p style="color: #451a03; line-height: 1.8;">
+                        <strong>感谢您对 888 博客 - Zero Day 研究与隐私保护的支持！</strong><br>
+                        您的捐赠将帮助我们维持站点运营、提升服务质量，为更多人提供有价值的隐私保护技术内容。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="article-grid" style="margin-top: 30px;">
+                <div class="article-card" style="border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">🎯 为什么需要您的支持</h3>
+                    <p style="margin-bottom: 15px; color: #555;">作为一个独立的暗网技术博客，我们坚持：</p>
+                    <ul style="line-height: 2; color: #444;">
+                        <li><strong>✅ 内容免费开放</strong> - 所有文章免费阅读</li>
+                        <li><strong>✅ 无强制广告</strong> - 不投放影响体验的弹窗广告</li>
+                        <li><strong>✅ 隐私优先</strong> - 不追踪用户，不收集个人信息</li>
+                        <li><strong>✅ 独立运营</strong> - 不接受资本控制，保持客观中立</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-weight: 600; color: #d946ef;">因此，您的捐赠是我们持续运营的关键！</p>
+                </div>
+                
+                <div class="article-card" style="border-left: 4px solid #10b981;">
+                    <h3 style="color: #10b981; margin-bottom: 15px;">💰 捐赠用途</h3>
+                    <p style="margin-bottom: 15px; color: #555;">所有捐赠将用于以下方面：</p>
+                    <ul style="line-height: 2; color: #444;">
+                        <li><strong>🖥️ 服务器维护</strong> - Tor 隐藏服务节点运营成本</li>
+                        <li><strong>🌐 域名续费</strong> - .onion 地址维护和备份</li>
+                        <li><strong>🔒 安全升级</strong> - SSL 证书、防护服务</li>
+                        <li><strong>✍️ 内容创作</strong> - 激励作者产出更多高质量内容</li>
+                        <li><strong>📢 技术推广</strong> - 导航站提交、SEO 优化</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 加密货币捐赠方式 -->
+            <div style="margin-top: 40px;">
+                <h3 style="font-size: 1.8em; color: #333; margin-bottom: 25px; text-align: center;">🪙 接受加密货币</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.1em;">我们注重隐私，仅接受加密货币捐赠。所有交易都将得到最大程度的隐私保护。</p>
+                
+                <div class="article-grid">
+                    <!-- XMR -->
+                    <div class="article-card" style="border: 2px solid #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <span style="font-size: 3em;">🔐</span>
+                            <h3 style="color: #92400e; margin: 10px 0;">Monero (XMR)</h3>
+                            <span style="background: #f59e0b; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600;">强烈推荐</span>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #f59e0b;">
+                            <p style="font-size: 0.8em; color: #666; margin-bottom: 5px;">捐赠地址：</p>
+                            <p style="font-family: monospace; word-break: break-all; color: #1f2937; font-size: 0.9em;">0x6f19e070dEb995351bED201BB3Ca7283EC66A820</p>
+                        </div>
+                        
+                        <h4 style="color: #92400e; margin: 15px 0 10px;">为什么推荐 XMR？</h4>
+                        <ul style="line-height: 1.8; color: #444;">
+                            <li><strong>🔐 完全匿名</strong> - 发送方、接收方、金额均隐藏</li>
+                            <li><strong>💸 低手续费</strong> - 通常 &lt;$0.01</li>
+                            <li><strong>⚡ 快速确认</strong> - 约 20 分钟</li>
+                            <li><strong>👻 无法追踪</strong> - 真正的隐私币</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: 600; color: #f59e0b;">建议金额：$20+</p>
+                    </div>
+                    
+                    <!-- BTC -->
+                    <div class="article-card" style="border: 2px solid #f97316; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <span style="font-size: 3em;">₿</span>
+                            <h3 style="color: #9a3412; margin: 10px 0;">Bitcoin (BTC)</h3>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #f97316;">
+                            <p style="font-size: 0.8em; color: #666; margin-bottom: 5px;">捐赠地址：</p>
+                            <p style="font-family: monospace; word-break: break-all; color: #1f2937; font-size: 0.9em;">bc1qc7h2qdt487zlrztcms5y4jdjpc8jkx0ps082h4</p>
+                        </div>
+                        
+                        <h4 style="color: #9a3412; margin: 15px 0 10px;">特点：</h4>
+                        <ul style="line-height: 1.8; color: #444;">
+                            <li><strong>⭐ 接受度最高</strong></li>
+                            <li><strong>💱 流动性好</strong></li>
+                            <li><strong>⏳ 链上交易较慢</strong>（10-60 分钟）</li>
+                            <li><strong>💰 手续费较高</strong>（$1-10）</li>
+                            <li><strong>📊 交易记录公开可查</strong></li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: 600; color: #f97316;">建议金额：$50+</p>
+                        <p style="margin-top: 10px; font-size: 0.85em; color: #dc2626;">⚠️ 隐私提示：如需更高隐私，建议使用 CoinJoin 混币后转账。</p>
+                    </div>
+                    
+                    <!-- LTC -->
+                    <div class="article-card" style="border: 2px solid #3b82f6; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <span style="font-size: 3em;">🚀</span>
+                            <h3 style="color: #1e40af; margin: 10px 0;">Litecoin (LTC)</h3>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #3b82f6;">
+                            <p style="font-size: 0.8em; color: #666; margin-bottom: 5px;">捐赠地址：</p>
+                            <p style="font-family: monospace; word-break: break-all; color: #1f2937; font-size: 0.9em;">0x6f19e070dEb995351bED201BB3Ca7283EC66A820</p>
+                        </div>
+                        
+                        <h4 style="color: #1e40af; margin: 15px 0 10px;">特点：</h4>
+                        <ul style="line-height: 1.8; color: #444;">
+                            <li><strong>💸 超低手续费</strong>（&lt;$0.01）</li>
+                            <li><strong>⚡ 快速确认</strong>（~2.5 分钟）</li>
+                            <li><strong>💎 适合小额捐赠</strong></li>
+                            <li><strong>📊 交易记录公开</strong></li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: 600; color: #3b82f6;">建议金额：$10+</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 赞助等级 -->
+            <div style="margin-top: 40px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; padding: 30px; border: 2px solid #10b981;">
+                <h3 style="color: #065f46; margin-bottom: 20px; font-size: 1.6em; text-align: center;">🏆 赞助等级与奖励</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #10b981;">
+                        <h4 style="color: #10b981; margin-bottom: 10px;">🥉 铜牌赞助者</h4>
+                        <p style="font-size: 1.5em; font-weight: 700; color: #065f46; margin-bottom: 10px;">$20 - $49</p>
+                        <ul style="line-height: 1.8; color: #444; font-size: 0.9em;">
+                            <li>✅ 网站鸣谢名单</li>
+                            <li>✅ 专属感谢徽章</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f59e0b;">
+                        <h4 style="color: #f59e0b; margin-bottom: 10px;">🥈 银牌赞助者</h4>
+                        <p style="font-size: 1.5em; font-weight: 700; color: #92400e; margin-bottom: 10px;">$50 - $99</p>
+                        <ul style="line-height: 1.8; color: #444; font-size: 0.9em;">
+                            <li>✅ 网站鸣谢名单</li>
+                            <li>✅ 专属感谢徽章</li>
+                            <li>✅ 提前访问新文章</li>
+                            <li>✅ 月度通讯订阅</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #eab308;">
+                        <h4 style="color: #eab308; margin-bottom: 10px;">🥇 金牌赞助者</h4>
+                        <p style="font-size: 1.5em; font-weight: 700; color: #854d0e; margin-bottom: 10px;">$100+</p>
+                        <ul style="line-height: 1.8; color: #444; font-size: 0.9em;">
+                            <li>✅ 所有银牌权益</li>
+                            <li>✅ VIP 频道临时访问权 (7 天)</li>
+                            <li>✅ 主题建议权</li>
+                            <li>✅ 年度总结报告</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 25px; color: #065f46; font-style: italic;">💡 如需企业级赞助或合作，请通过 Telegram 联系我们</p>
+            </div>
+            
+            <!-- 透明度承诺 -->
+            <div style="margin-top: 30px; background: #f8fafc; border-radius: 8px; padding: 20px; border-left: 4px solid #3b82f6;">
+                <h4 style="color: #1e40af; margin-bottom: 10px;">📊 透明度承诺</h4>
+                <p style="color: #475569; line-height: 1.8;">
+                    我们将定期公布捐赠收入和使用情况，确保每一笔资金都用于提升网站服务和内容质量。所有超过 $100 的捐赠都将收到我们的感谢邮件（如您提供联系方式）。
+                </p>
+            </div>
+            
+            <!-- 联系与反馈 -->
+            <div style="margin-top: 20px; text-align: center;">
+                <p style="color: #666; font-size: 0.95em;">
+                    💬 如有任何问题或需要帮助，请通过 <a href="https://t.me/yourchannel" style="color: #667eea; text-decoration: none;">Telegram</a> 联系我们
+                </p>
+            </div>
+        </section>
     </div>
     
     <footer>
@@ -143,7 +445,43 @@
             <p style="margin-top: 10px; font-size: 0.9em; color: #aaa;">
                 风险提示：投资有风险，入市需谨慎。本网站内容仅供参考，不构成投资建议。
             </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                <a href="#donation" style="color: #fbbf24; text-decoration: none;">💎 捐赠支持</a> | 
+                <a href="/donate.html" style="color: #fbbf24; text-decoration: none;">捐赠页面</a>
+            </p>
         </div>
     </footer>
+    
+    <script>
+        // 点击复制加密货币地址
+        function copyAddress(address, element) {
+            navigator.clipboard.writeText(address).then(() => {
+                const originalText = element.textContent;
+                element.textContent = '✅ 已复制!';
+                element.style.background = '#10b981';
+                element.style.color = 'white';
+                
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.background = '';
+                    element.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                alert('复制失败，请手动复制');
+            });
+        }
+        
+        // 为所有捐赠地址添加点击复制功能
+        document.addEventListener('DOMContentLoaded', () => {
+            const addressElements = document.querySelectorAll('#donation .article-card p[style*="monospace"]');
+            addressElements.forEach(el => {
+                el.style.cursor = 'pointer';
+                el.title = '点击复制地址';
+                el.addEventListener('click', () => {
+                    copyAddress(el.textContent.trim(), el);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
