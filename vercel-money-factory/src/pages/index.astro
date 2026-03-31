@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // 获取所有足球预测文章
-const predictionsDir = './predictions';
 let footballPredictions = [];
 try {
   const predictionFiles = await Astro.glob('./predictions/*.md');

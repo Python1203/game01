@@ -1,0 +1,50 @@
+---
+// Affiliate 链接重定向页面 - Telegram VIP
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AFFILIATE_LINKS } from '../../config/affiliate';
+
+const TELEGRAM_VIP_LINK = AFFILIATE_LINKS.telegramVIP;
+
+// 立即跳转
+if (typeof window !== 'undefined') {
+  window.location.href = TELEGRAM_VIP_LINK;
+}
+---
+
+<BaseLayout title="Join VIP Channel...">
+  <div style="text-align: center; padding: 4rem 2rem;">
+    <h1>✈️ 正在跳转到 VIP 频道...</h1>
+    <p>请稍候，如果页面没有自动跳转，请点击下方按钮</p>
+    
+    <a 
+      href={TELEGRAM_VIP_LINK} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: #0088cc; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;"
+    >
+      🚀 立即加入 VIP 频道
+    </a>
+    
+    <div style="margin-top: 3rem; padding: 1rem; background: #f3f4f6; border-radius: 8px; max-width: 500px; margin-left: auto; margin-right: auto;">
+      <h3 style="margin-top: 0;">🎯 VIP 会员特权</h3>
+      <ul style="text-align: left; line-height: 2; color: #374151;">
+        <li>✅ 每日精准波胆预测</li>
+        <li>✅ 亚盘/大小球专业推荐</li>
+        <li>✅ 临场赔率变化提醒</li>
+        <li>✅ 专家一对一指导</li>
+        <li>✅ 高胜率投注方案</li>
+      </ul>
+      
+      <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
+        <strong>🎁 限时优惠：</strong> 首月仅需 $99 | 不满意全额退款
+      </div>
+    </div>
+  </div>
+  
+  <script set:html={`
+    // 自动跳转
+    setTimeout(() => {
+      window.location.href = "${TELEGRAM_VIP_LINK}";
+    }, 1000);
+  `} />
+</BaseLayout>

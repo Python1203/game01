@@ -12,4 +12,4 @@ The current price of **SOL** is $145.20. Market sentiment is showing a +5.8% mov
 
 ## AI Prediction
 Our AI model suggests that SOL is approaching a critical resistance level. 
-[Click here to trade SOL on Binance with 20% cashback](YOUR_AFF_LINK)
+[Click here to trade SOL on Binance with 20% cashback](https://www.binance.com/activity/referral-entry/CPA?ref=CPA_007OA94MQ0)

@@ -12,4 +12,4 @@ The current price of **BTC** is $65432.10. Market sentiment is showing a +2.5% m
 
 ## AI Prediction
 Our AI model suggests that BTC is approaching a critical resistance level. 
-[Click here to trade BTC on Binance with 20% cashback](YOUR_AFF_LINK)
+[Click here to trade BTC on Binance with 20% cashback](https://www.binance.com/activity/referral-entry/CPA?ref=CPA_007OA94MQ0)

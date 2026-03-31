@@ -1,0 +1,44 @@
+---
+// Affiliate 链接重定向页面 - Stake
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AFFILIATE_LINKS } from '../../config/affiliate';
+
+const STAKE_AFFILIATE_LINK = AFFILIATE_LINKS.stake;
+
+// 立即跳转
+if (typeof window !== 'undefined') {
+  window.location.href = STAKE_AFFILIATE_LINK;
+}
+---
+
+<BaseLayout title="Redirecting to Stake...">
+  <div style="text-align: center; padding: 4rem 2rem;">
+    <h1>🎰 正在跳转到 Stake...</h1>
+    <p>请稍候，如果页面没有自动跳转，请点击下方按钮</p>
+    
+    <a 
+      href={STAKE_AFFILIATE_LINK} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: #00d4aa; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;"
+    >
+      🎁 立即前往 Stake 领取 $1000 奖金
+    </a>
+    
+    <div style="margin-top: 3rem; padding: 1rem; background: #f3f4f6; border-radius: 8px; max-width: 500px; margin-left: auto; margin-right: auto;">
+      <h3 style="margin-top: 0;">⚠️ 免责声明</h3>
+      <p style="font-size: 0.875rem; color: #4b5563; line-height: 1.6;">
+        博彩涉及风险，请理性投注。本站可能从推荐链接中获得佣金，但这不会影响您的用户体验。<br><br>
+        <strong>必须年满 18 岁才能参与博彩活动。</strong><br>
+        如需帮助，请访问 <a href="https://www.begambleaware.org/" target="_blank">BeGambleAware.org</a>
+      </p>
+    </div>
+  </div>
+  
+  <script set:html={`
+    // 自动跳转
+    setTimeout(() => {
+      window.location.href = "${STAKE_AFFILIATE_LINK}";
+    }, 1000);
+  `} />
+</BaseLayout>

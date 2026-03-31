@@ -12,4 +12,4 @@ The current price of **ETH** is $3456.78. Market sentiment is showing a -1.2% mo
 
 ## AI Prediction
 Our AI model suggests that ETH is approaching a critical resistance level. 
-[Click here to trade ETH on Binance with 20% cashback](YOUR_AFF_LINK)
+[Click here to trade ETH on Binance with 20% cashback](https://www.binance.com/activity/referral-entry/CPA?ref=CPA_007OA94MQ0)

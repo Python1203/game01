@@ -38,7 +38,7 @@ class AIContentGenerator:
         self.model_type = model_type
         
         if model_type == "deepseek":
-            self.base_url = base_url or "https://xh.v1api.cc"
+            self.base_url = base_url or "https://api.deepseek.com"  # 使用官方 Base URL
             self.model = "deepseek-chat"
         else:  # openai
             openai.api_key = api_key
@@ -124,7 +124,7 @@ class AIContentGenerator:
         }
         
         try:
-            response = requests.post(url, json=payload, headers=headers, timeout=30)
+            response = requests.post(url, json=payload, headers=headers, timeout=120)
             response.raise_for_status()
             
             result = response.json()
@@ -137,6 +137,10 @@ class AIContentGenerator:
         except requests.exceptions.HTTPError as e:
             error_detail = response.text if 'response' in locals() else str(e)
             raise Exception(f"DeepSeek API 请求失败 ({response.status_code}): {error_detail}")
+        except requests.exceptions.Timeout as e:
+            raise Exception(f"DeepSeek API 请求超时（120 秒）：{e}\n💡 建议：1.检查网络连接 2.更换有效的 API Key 3.切换到 OpenAI 4.使用官方 Base URL: https://api.deepseek.com")
+        except requests.exceptions.ConnectionError as e:
+            raise Exception(f"DeepSeek API 连接失败：{e}\n💡 建议：1.检查 Base URL 是否正确 2.联系 API 提供商")
         except requests.exceptions.RequestException as e:
             raise Exception(f"DeepSeek API 网络错误：{e}")
         except Exception as e:
