@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd vercel-money-factory && npm install && npm run build",
+  "buildCommand": "cd vercel-money-factory && npm install && npm run build && python ../deploy_articles.py",
   "outputDirectory": "vercel-money-factory/dist",
   "framework": "astro",
   "env": {
