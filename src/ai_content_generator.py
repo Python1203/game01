@@ -223,6 +223,60 @@ class AIContentGenerator:
 请生成专业、深入的加密货币分析。
 """
         
+        elif content_type == "index_analysis":
+            prompt = f"""
+请为全球指数 {symbol} ({data.get('name', symbol)}) 撰写一篇专业的市场分析报告。
+
+【实时数据】
+- 当前点位：{data.get('price', 0):,.2f}
+- 涨跌：{data.get('change', 0):.2f} ({data.get('change_percent', '0%')})
+- 开盘：{data.get('open', 0):,.2f}
+- 最高：{data.get('high', 0):,.2f}
+- 最低：{data.get('low', 0):,.2f}
+- 昨收：{data.get('previous_close', 0):,.2f}
+- 成交量：{data.get('volume', 0):,}
+
+【SEO 关键词】
+{', '.join(keywords)}
+
+【文章要求】
+1. 标题专业，包含指数名称和核心观点
+2. 摘要概括市场走势 (50-80 字)
+3. 分析宏观经济背景和影响因素
+4. 技术面分析和关键支撑/阻力位
+5. 全球经济市场展望
+6. 字数 800-1200 字，Markdown 格式
+
+请生成专业、权威的市场分析。
+"""
+        
+        elif content_type == "etf_analysis":
+            prompt = f"""
+请为 ETF {symbol} ({data.get('name', symbol)}) 撰写一篇专业的投资配置分析文章。
+
+【实时数据】
+- 当前价格：${data.get('price', 0)}
+- 涨跌幅：{data.get('change_percent', '0%')}
+- 成交量：{data.get('volume', 0):,}
+- 52 周最高：${data.get('fifty_two_week_high', 0)}
+- 52 周最低：${data.get('fifty_two_week_low', 0)}
+- 开盘：${data.get('open', 0)}
+
+【SEO 关键词】
+{', '.join(keywords)}
+
+【文章要求】
+1. 标题专业，包含 ETF 名称和配置建议
+2. 摘要概括投资价值 (50-80 字)
+3. 分析 ETF 的底层资产和跟踪指数
+4. 资产配置价值和投资组合建议
+5. 风险收益特征分析
+6. 适合的投资人群
+7. 字数 800-1200 字，Markdown 格式
+
+请生成专业、实用的 ETF 配置建议。
+"""
+        
         else:  # casino/betting
             prompt = f"""
 请撰写一篇赌场/博彩相关的推荐文章。
@@ -256,6 +310,12 @@ class AIContentGenerator:
             "crypto_analysis": """你是一位资深的加密货币分析师，熟悉区块链技术和 DeFi 生态。
 你的分析深入透彻，善于结合链上数据和市场情绪，提供客观的投资建议。""",
             
+            "index_analysis": """你是一位首席经济学家，精通全球宏观经济和金融市场。
+你的分析权威专业，善于解读经济数据对市场的影响，提供前瞻性的市场展望。""",
+            
+            "etf_analysis": """你是一位资深投资顾问，擅长资产配置和 ETF 投资策略。
+你的建议实用可行，注重风险控制和长期投资回报，帮助投资者构建 optimal 的投资组合。""",
+            
             "casino_review": """你是一位经验丰富的博彩行业专家，熟悉各大平台和游戏规则。
 你的推荐真实可信，注重用户体验和安全性，善于发现优惠活动的价值。"""
         }
@@ -288,6 +348,8 @@ class AIContentGenerator:
         type_map = {
             "stock_analysis": "stock-analysis",
             "crypto_analysis": "crypto-analysis",
+            "index_analysis": "index-analysis",
+            "etf_analysis": "etf-analysis",
             "casino_review": "casino-review"
         }
         

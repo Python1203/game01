@@ -17,6 +17,202 @@ class DataCollector:
         self.binance_base = "https://api.binance.com/api/v3"
         self.coingecko_base = "https://api.coingecko.com/api/v3"
         
+    def fetch_global_index_data(self, symbols: List[str]) -> Dict:
+        """
+        获取全球指数数据
+        支持：^GSPC (标普 500), ^DJI (道琼斯), ^IXIC (纳斯达克), ^VIX (恐慌指数), 
+             ^FTSE (富时 100), ^GDAXI (德国 DAX), ^N225 (日经 225), ^HSI (恒生)
+        
+        注意：Finnhub 免费版不支持指数 CFD 数据，将自动使用模拟数据
+        建议：使用 ETF 替代（SPY 替代标普 500, QQQ 替代纳斯达克）
+        """
+        index_data = {}
+        
+        if not self.finnhub_key:
+            print("⚠️ 未配置 Finnhub API，使用模拟指数数据")
+            return self._generate_mock_index_data(symbols)
+        
+        for symbol in symbols:
+            try:
+                url = f"https://finnhub.io/api/v1/quote?symbol={symbol}&token={self.finnhub_key}"
+                response = requests.get(url, timeout=10)
+                data = response.json()
+                
+                # 检查是否是订阅限制
+                if isinstance(data, dict) and "error" in data:
+                    error_msg = data.get("error", "Unknown error")
+                    if "subscription" in error_msg.lower():
+                        print(f"⚠️ Finnhub 免费版限制：{symbol} - 使用模拟数据")
+                        index_data[symbol] = self._generate_mock_index_data([symbol])[symbol]
+                        continue
+                
+                if isinstance(data, dict) and "c" in data:
+                    index_data[symbol] = {
+                        "symbol": symbol,
+                        "name": self._get_index_name(symbol),
+                        "price": data.get("c", 0),
+                        "change": round(data.get("c", 0) - data.get("pc", 0), 2),
+                        "change_percent": f"{((data.get('c', 0) - data.get('pc', 0)) / data.get('pc', 1) * 100):.2f}%",
+                        "volume": data.get("v", 0),
+                        "high": data.get("h", 0),
+                        "low": data.get("l", 0),
+                        "open": data.get("o", 0),
+                        "previous_close": data.get("pc", 0),
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    print(f"✓ Finnhub: {symbol} ({self._get_index_name(symbol)}) 价格 {data.get('c', 0):,.2f}")
+                else:
+                    raise Exception(f"Finnhub 返回异常数据：{data}")
+                    
+            except Exception as e:
+                print(f"⚠️ Finnhub 获取指数 {symbol} 失败：{e}")
+                index_data[symbol] = self._generate_mock_index_data([symbol])[symbol]
+        
+        return index_data
+    
+    def fetch_etf_data(self, symbols: List[str]) -> Dict:
+        """
+        获取 ETF 数据
+        支持：SPY (标普 500 ETF), QQQ (纳斯达克 100 ETF), DIA (道琼斯 ETF),
+             VOO (Vanguard 标普 500), ARKK (创新 ETF), IWM (罗素 2000),
+             GLD (黄金 ETF), SLV (白银 ETF), USO (原油 ETF), TLT (20 年 + 国债 ETF)
+        """
+        etf_data = {}
+        
+        if not self.finnhub_key:
+            print("⚠️ 未配置 Finnhub API，无法获取 ETF 数据")
+            return self._generate_mock_etf_data(symbols)
+        
+        for symbol in symbols:
+            try:
+                url = f"https://finnhub.io/api/v1/quote?symbol={symbol}&token={self.finnhub_key}"
+                response = requests.get(url, timeout=10)
+                data = response.json()
+                
+                if isinstance(data, dict) and "c" in data:
+                    etf_data[symbol] = {
+                        "symbol": symbol,
+                        "name": self._get_etf_name(symbol),
+                        "price": data.get("c", 0),
+                        "change": round(data.get("c", 0) - data.get("pc", 0), 2),
+                        "change_percent": f"{((data.get('c', 0) - data.get('pc', 0)) / data.get('pc', 1) * 100):.2f}%",
+                        "volume": data.get("v", 0),
+                        "high": data.get("h", 0),
+                        "low": data.get("l", 0),
+                        "open": data.get("o", 0),
+                        "previous_close": data.get("pc", 0),
+                        "fifty_two_week_high": data.get("h52W", 0),
+                        "fifty_two_week_low": data.get("l52W", 0),
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    print(f"✓ Finnhub: {symbol} ({self._get_etf_name(symbol)}) 价格 ${data.get('c', 0):,.2f}")
+                else:
+                    raise Exception(f"Finnhub 返回异常数据：{data}")
+                    
+            except Exception as e:
+                print(f"⚠️ Finnhub 获取 ETF {symbol} 失败：{e}")
+                etf_data[symbol] = self._generate_mock_etf_data([symbol])[symbol]
+        
+        return etf_data
+    
+    def _get_index_name(self, symbol: str) -> str:
+        """获取指数名称"""
+        index_names = {
+            "^GSPC": "标普 500 指数",
+            "^DJI": "道琼斯工业平均指数",
+            "^IXIC": "纳斯达克综合指数",
+            "^VIX": "CBOE 波动率指数 (恐慌指数)",
+            "^FTSE": "富时 100 指数",
+            "^GDAXI": "德国 DAX 指数",
+            "^N225": "日经 225 指数",
+            "^HSI": "恒生指数",
+            "^SSEC": "上证指数",
+            "^BSESN": "印度孟买 Sensex 指数"
+        }
+        return index_names.get(symbol, symbol)
+    
+    def _get_etf_name(self, symbol: str) -> str:
+        """获取 ETF 名称"""
+        etf_names = {
+            "SPY": "SPDR 标普 500 ETF",
+            "QQQ": "Invesco 纳斯达克 100 ETF",
+            "DIA": "SPDR 道琼斯工业平均 ETF",
+            "VOO": "Vanguard 标普 500 ETF",
+            "ARKK": "ARK 创新 ETF",
+            "IWM": "iShares 罗素 2000 ETF",
+            "GLD": "SPDR 黄金信托",
+            "SLV": "iShares 白银信托",
+            "USO": "United 原油基金",
+            "TLT": "iShares 20 年 + 美国国债 ETF",
+            "VTI": "Vanguard 全美市场 ETF",
+            "EFA": "iShares MSCI EAFE ETF",
+            "EEM": "iShares MSCI 新兴市场 ETF",
+            "XLF": "金融精选行业 SPDR",
+            "XLK": "科技精选行业 SPDR",
+            "XLV": "医疗保健精选行业 SPDR",
+            "XLE": "能源精选行业 SPDR"
+        }
+        return etf_names.get(symbol, symbol)
+    
+    def _generate_mock_index_data(self, symbols: List[str]) -> Dict:
+        """生成模拟指数数据"""
+        import random
+        index_data = {}
+        
+        base_prices = {
+            "^GSPC": 5200, "^DJI": 39000, "^IXIC": 16500, "^VIX": 15,
+            "^FTSE": 7800, "^GDAXI": 18000, "^N225": 40000, "^HSI": 17000
+        }
+        
+        for symbol in symbols:
+            base = base_prices.get(symbol, 1000)
+            index_data[symbol] = {
+                "symbol": symbol,
+                "name": self._get_index_name(symbol),
+                "price": round(base * random.uniform(0.98, 1.02), 2),
+                "change": round(random.uniform(-100, 100), 2),
+                "change_percent": f"{random.uniform(-2, 2):.2f}%",
+                "volume": random.randint(100000000, 1000000000),
+                "high": round(base * 1.01, 2),
+                "low": round(base * 0.99, 2),
+                "open": round(base * random.uniform(0.99, 1.01), 2),
+                "previous_close": round(base, 2),
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        return index_data
+    
+    def _generate_mock_etf_data(self, symbols: List[str]) -> Dict:
+        """生成模拟 ETF 数据"""
+        import random
+        etf_data = {}
+        
+        base_prices = {
+            "SPY": 520, "QQQ": 450, "DIA": 390, "VOO": 480,
+            "ARKK": 50, "IWM": 200, "GLD": 190, "SLV": 23,
+            "USO": 75, "TLT": 95
+        }
+        
+        for symbol in symbols:
+            base = base_prices.get(symbol, 100)
+            etf_data[symbol] = {
+                "symbol": symbol,
+                "name": self._get_etf_name(symbol),
+                "price": round(base * random.uniform(0.98, 1.02), 2),
+                "change": round(random.uniform(-5, 5), 2),
+                "change_percent": f"{random.uniform(-2, 2):.2f}%",
+                "volume": random.randint(1000000, 50000000),
+                "high": round(base * 1.01, 2),
+                "low": round(base * 0.99, 2),
+                "open": round(base * random.uniform(0.99, 1.01), 2),
+                "previous_close": round(base, 2),
+                "fifty_two_week_high": round(base * 1.15, 2),
+                "fifty_two_week_low": round(base * 0.85, 2),
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        return etf_data
+    
     def fetch_stock_data(self, symbols: List[str]) -> Dict:
         """
         获取股票行情数据

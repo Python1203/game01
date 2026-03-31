@@ -55,6 +55,14 @@ def main():
     crypto_data = collector.fetch_crypto_data(symbols=["BTC", "ETH", "SOL", "BNB"])
     print(f"✓ 采集到 {len(crypto_data)} 条加密货币数据")
     
+    # 采集全球指数数据（新增）
+    index_data = collector.fetch_global_index_data(symbols=["^GSPC", "^DJI", "^IXIC", "^VIX"])
+    print(f"✓ 采集到 {len(index_data)} 条全球指数数据")
+    
+    # 采集 ETF 数据（新增）
+    etf_data = collector.fetch_etf_data(symbols=["SPY", "QQQ", "DIA", "GLD", "TLT"])
+    print(f"✓ 采集到 {len(etf_data)} 条 ETF 数据")
+    
     # 采集赌场/博彩数据
     casino_data = collector.fetch_casino_odds()
     print(f"✓ 采集到 {len(casino_data)} 条赔率数据")
@@ -83,6 +91,28 @@ def main():
         )
         articles.append(article)
         print(f"✓ 生成文章：{symbol} 市场分析")
+    
+    # 生成全球指数分析文章（新增）
+    for symbol, data in index_data.items():
+        article = generator.generate_analysis_article(
+            symbol=symbol,
+            data=data,
+            content_type="index_analysis",
+            keywords=[f"{data['name']}走势", "全球市场展望", "宏观经济分析"]
+        )
+        articles.append(article)
+        print(f"✓ 生成文章：{data['name']} 分析报告")
+    
+    # 生成 ETF 投顾分析文章（新增）
+    for symbol, data in etf_data.items():
+        article = generator.generate_analysis_article(
+            symbol=symbol,
+            data=data,
+            content_type="etf_analysis",
+            keywords=[f"{data['name']}配置建议", "ETF 投资策略", "资产配置"]
+        )
+        articles.append(article)
+        print(f"✓ 生成文章：{data['name']} 投资分析")
 
     # 4. 注入 Affiliate Links
     print("\n💰 步骤 3: 注入变现链接...")
