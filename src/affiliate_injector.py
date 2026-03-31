@@ -9,8 +9,9 @@ import re
 class AffiliateInjector:
     """Affiliate Link 注入器"""
     
-    def __init__(self, affiliate_links: List[str]):
+    def __init__(self, affiliate_links: List[str], binance_link: str = None):
         self.affiliate_links = [link.strip() for link in affiliate_links if link.strip()]
+        self.binance_link = binance_link.strip() if binance_link else None
         
         # 定义不同类别的推荐文案模板
         self.cta_templates = {
@@ -85,8 +86,13 @@ class AffiliateInjector:
     
     def _inject_crypto_links(self, content: str, symbol: str) -> str:
         """向加密货币文章注入链接"""
-        link = self.affiliate_links[0] if self.affiliate_links else "#"
-        exchange_name = self.partner_names["crypto"][0]
+        # 优先使用币安专用链接
+        if self.binance_link:
+            link = self.binance_link
+            exchange_name = "Binance"
+        else:
+            link = self.affiliate_links[0] if self.affiliate_links else "#"
+            exchange_name = self.partner_names["crypto"][0]
         
         cta_options = self.cta_templates["crypto_analysis"]
         cta_text = cta_options[0].format(

@@ -23,6 +23,7 @@ def main():
     
     # 1. 初始化配置
     affiliate_links = os.getenv("AFFILIATE_LINKS", "").split(",")
+    binance_link = os.getenv("BINANCE_AFFILIATE_LINK")  # 币安专用返佣链接
     
     # 检测使用哪个 AI 模型
     deepseek_key = os.getenv("DEEPSEEK_API_KEY")
@@ -116,7 +117,7 @@ def main():
 
     # 4. 注入 Affiliate Links
     print("\n💰 步骤 3: 注入变现链接...")
-    injector = AffiliateInjector(affiliate_links=affiliate_links)
+    injector = AffiliateInjector(affiliate_links=affiliate_links, binance_link=binance_link)
     
     for article in articles:
         injected_content = injector.inject_links(article)

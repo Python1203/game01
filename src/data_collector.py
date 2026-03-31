@@ -366,32 +366,59 @@ class DataCollector:
     def fetch_casino_odds(self) -> Dict:
         """
         获取赌场/博彩赔率数据
-        可以使用 The-Odds-API 或其他博彩 API
-        这里提供示例框架
+        使用 The-Odds-API 和 API-Football/Basketball
         """
         casino_data = {}
         
         try:
-            # 示例：使用 The-Odds-API
+            # 1. 使用 The-Odds-API 获取综合赔率数据
             odds_api_key = os.getenv("ODDS_API_KEY", "")
             if odds_api_key:
+                print(f"✓ 配置 The-Odds-API，每日限额 500 次")
                 url = (
                     f"https://api.the-odds-api.com/v4/sports/upcoming/odds?"
                     f"regions=us&markets=h2h&apiKey={odds_api_key}"
                 )
                 response = requests.get(url, timeout=10)
-                data = response.json()
                 
-                for event in data[:10]:  # 限制数量
-                    casino_data[event["id"]] = {
-                        "event_name": event["home_team"] + " vs " + event["away_team"],
-                        "sport": event["sport_title"],
-                        "commence_time": event["commence_time"],
-                        "odds": event["bookmakers"][0]["markets"][0]["outcomes"] if event["bookmakers"] else [],
-                        "timestamp": datetime.now().isoformat()
-                    }
+                if response.status_code == 200:
+                    data = response.json()
+                    
+                    for event in data[:15]:  # 限制数量
+                        casino_data[event["id"]] = {
+                            "event_name": event["home_team"] + " vs " + event["away_team"],
+                            "sport": event["sport_title"],
+                            "commence_time": event["commence_time"],
+                            "odds": event["bookmakers"][0]["markets"][0]["outcomes"] if event["bookmakers"] else [],
+                            "source": "The-Odds-API",
+                            "timestamp": datetime.now().isoformat()
+                        }
+                    print(f"✓ The-Odds-API: 获取到 {len(data[:15])} 场赛事赔率")
+                else:
+                    print(f"⚠️ The-Odds-API 请求失败：{response.status_code}")
             else:
-                print("⚠️ 未配置博彩 API，使用模拟数据")
+                print("⚠️ 未配置 The-Odds-API")
+            
+            # 2. 使用 API-Football 获取足球赛事（如有需要）
+            sports_api_key = os.getenv("SPORTS_API_KEY", "")
+            if sports_api_key:
+                print(f"✓ 配置 API-Football/Basketball")
+                # 示例：获取足球赛事
+                football_url = f"https://v3.football.api-sports.io/fixtures?live=all"
+                headers = {"x-apisports-key": sports_api_key}
+                
+                try:
+                    football_response = requests.get(football_url, headers=headers, timeout=10)
+                    if football_response.status_code == 200:
+                        football_data = football_response.json()
+                        print(f"✓ API-Football: 获取到 {football_data.get('results', 0)} 场进行中赛事")
+                        # 可以在此添加足球赛事处理逻辑
+                except Exception as e:
+                    print(f"⚠️ API-Football 请求失败：{e}")
+            
+            # 如果没有获取到真实数据，使用模拟数据
+            if not casino_data:
+                print("⚠️ 未获取到真实赔率数据，使用模拟数据")
                 casino_data = self._generate_mock_casino_data()
                 
         except Exception as e:

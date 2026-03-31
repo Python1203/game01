@@ -1,8 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 获取所有足球预测文章
+const predictionsDir = './predictions';
+let footballPredictions = [];
+try {
+  const predictionFiles = await Astro.glob('./predictions/*.md');
+  footballPredictions = predictionFiles.map((post) => ({
+    url: `/predictions/${post.file.split('/').pop().replace('.md', '')}`,
+    title: post.frontmatter.title,
+    homeTeam: post.frontmatter.home_team,
+    awayTeam: post.frontmatter.away_team,
+    commenceTime: post.frontmatter.commence_time,
+  }));
+} catch (e) {
+  console.log('No predictions found:', e);
+}
 ---
 
-<BaseLayout title="AI Market Insight - Real-time Crypto & Stock Analysis">
+<BaseLayout title="AI Market Insight - Real-time Crypto, Stock & Football Predictions">
   <h1>🔥 热门行情预测</h1>
   <p>AI 驱动的市场分析，助您把握投资先机</p>
   
@@ -19,6 +35,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/crypto/sol" style="color: #2563eb; text-decoration: none;">◎ Solana (SOL) 分析 →</a>
       </li>
     </ul>
+  </section>
+
+  <section style="margin-top: 2rem;">
+    <h2>⚽ 足球比赛预测</h2>
+    {footballPredictions.length > 0 ? (
+      <ul style="list-style: none; padding: 0;">
+        {footballPredictions.map((prediction) => (
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
+            <a href={prediction.url} style="color: #2563eb; text-decoration: none; display: block;">
+              <strong>{prediction.homeTeam}</strong> vs <strong>{prediction.awayTeam}</strong>
+              <span style="display: block; font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">
+                📅 {new Date(prediction.commenceTime).toLocaleDateString('zh-CN')}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p style="color: #6b7280; font-style: italic;">暂无足球预测，即将更新...</p>
+    )}
   </section>
 
   <section style="margin-top: 2rem;">

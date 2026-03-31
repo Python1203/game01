@@ -33,10 +33,13 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 # 数据源配置
 ALPHA_VANTAGE_KEY=demo  # 或使用付费 key
-ODDS_API_KEY=your_odds_api_key  # 可选，用于博彩数据
+FINNHUB_KEY=d6rihfpr01qr194ms4ngd6rihfpr01qr194ms4o0  # 美股/全球市场数据
+ODDS_API_KEY=3838a6272cab9b49dac3d9f646fbca4b  # The-Odds-API（博彩赔率）
+SPORTS_API_KEY=58ce01aadd6863c36e4c86d807233d25  # API-Football/Basketball
 
 # 变现配置
 AFFILIATE_LINKS=https://your-affiliate-link-1.com,https://your-affiliate-link-2.com
+BINANCE_AFFILIATE_LINK=https://www.binance.com/activity/referral-entry/CPA?ref=CPA_007OA94MQ0  # 币安返佣链接（加密货币专用）
 ```
 
 ### 3. 本地测试
@@ -96,9 +99,10 @@ python main.py
 
 在 Vercel 项目设置中添加:
 
-- `OPENAI_API_KEY`: OpenAI API密钥
-- `ALPHA_VANTAGE_KEY`: Alpha Vantage API密钥
+- `OPENAI_API_KEY`: OpenAI API 密钥
+- `ALPHA_VANTAGE_KEY`: Alpha Vantage API 密钥
 - `AFFILIATE_LINKS`: 变现链接 (逗号分隔)
+- `BINANCE_AFFILIATE_LINK`: 币安返佣链接（加密货币文章专用）
 
 ### 步骤 4: 获取 Deploy Hook URL
 
@@ -201,6 +205,76 @@ if __name__ == "__main__":
 2. **A/B 测试**: 使用不同文案测试转化率
 3. **合规性**: 添加免责声明和风险提示
 4. **多样化**: 混合使用多个平台链接降低风险
+
+---
+
+## 📡 API 集成说明
+
+### 已集成的 API
+
+#### 1. **股票/市场数据**
+- **Finnhub API**: 美股、港股、A 股、指数数据
+  - Token: `d6rihfpr01qr194ms4ngd6rihfpr01qr194ms4o0`
+  - 配额：60 次/分钟（免费版）
+  - 文档：https://finnhub.io/docs/api
+
+- **Alpha Vantage**: 备用股票数据源
+  - Key: `demo`（建议申请免费 Key：500 次/天）
+  - 文档：https://www.alphavantage.co
+
+#### 2. **加密货币数据**
+- **Binance API**: 实时币价、24h 涨跌幅
+  - 无需 API Key（公开接口）
+  - 配额：无限制
+  - 文档：https://binance-docs.github.io/apidocs/
+
+- **CoinGecko**: 备用加密货币数据
+  - 无需 API Key（免费版）
+  - 配额：10-50 次/分钟
+  - 文档：https://www.coingecko.com/en/api/documentation
+
+#### 3. **博彩/体育数据** ✅ 新增
+- **The-Odds-API**: 综合赔率数据
+  - Key: `3838a6272cab9b49dac3d9f646fbca4b`
+  - 配额：**500 次/天**（免费版）
+  - 支持：MLB, NBA, NFL, NHL, NCAA, 足球等
+  - 文档：https://the-odds-api.com/
+
+- **API-Football/Basketball**: 实时体育赛事
+  - Key: `58ce01aadd6863c36e4c86d807233d25`
+  - 支持：足球、篮球等多种体育项目
+  - 文档：https://www.api-football.com/documentation
+
+### API 使用策略
+
+| API | 每日限额 | 建议调用频率 | 用途 |
+|-----|---------|-------------|------|
+| The-Odds-API | 500 次 | 每 6-8 小时 1 次 | 博彩赔率分析 |
+| API-Football | 不限 | 按需 | 实时赛事数据 |
+| Finnhub | 60 次/分钟 | 按需 | 股票/指数行情 |
+| Binance | 不限 | 按需 | 加密货币价格 |
+
+### 构建频率建议
+
+根据 The-Odds-API 的配额（500 次/天），推荐：
+
+```yaml
+# GitHub Actions cron 配置
+- cron: '0 */6 * * *'  # 每 6 小时一次（每天 4 次，每次约 50 次调用 = 200 次/天）
+- cron: '0 */8 * * *'  # 每 8 小时一次（每天 3 次，更保守）
+```
+
+### 测试 API 连接
+
+```bash
+# 测试所有 API
+python3 test_casino_apis.py
+
+# 测试股票/加密 API
+python3 test_api_integration.py
+```
+
+详细配置指南请查看：[CASINO_API_SETUP.md](./CASINO_API_SETUP.md)
 
 ---
 
