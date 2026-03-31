@@ -1,6 +1,12 @@
 {
   "version": 2,
-  "buildCommand": "pip install -r requirements.txt && python build_content.py && astro build",
+  "buildCommand": "pip install -r requirements.txt && python build_football_predictions.py && astro build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "crons": [
+    {
+      "path": "/api/build",
+      "schedule": "0 2,10 * * *"
+    }
+  ]
 }

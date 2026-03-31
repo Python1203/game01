@@ -1,0 +1,140 @@
+---
+// 赔率对比组件 - 专业博彩站风格
+const { homeOdds, drawOdds, awayOdds, bookmaker } = Astro.props;
+---
+
+<div class="odds-display">
+  <div class="odds-header">
+    <h3>实时赔率对比</h3>
+    <span class="live-indicator">🔴 LIVE</span>
+  </div>
+  
+  <div class="odds-grid">
+    <div class="odd-card">
+      <span class="odd-label">主胜</span>
+      <span class="odd-value">{homeOdds.toFixed(2)}</span>
+      <span class="odd-bookmaker">{bookmaker}</span>
+    </div>
+    
+    <div class="odd-card">
+      <span class="odd-label">平局</span>
+      <span class="odd-value">{drawOdds.toFixed(2)}</span>
+      <span class="odd-bookmaker">{bookmaker}</span>
+    </div>
+    
+    <div class="odd-card">
+      <span class="odd-label">客胜</span>
+      <span class="odd-value">{awayOdds.toFixed(2)}</span>
+      <span class="odd-bookmaker">{bookmaker}</span>
+    </div>
+  </div>
+  
+  <div class="betting-cta">
+    <a href="/go/stake" class="btn-primary">
+      🎁 立即投注 - 领取$1000 奖金
+    </a>
+    <p class="disclaimer">
+      ⚠️ 博彩有风险 | 18+ | BeGambleAware.org
+    </p>
+  </div>
+</div>
+
+<style>
+  .odds-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .odds-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .odds-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .live-indicator {
+    background: #ef4444;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  .odds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .odd-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .odd-label {
+    display: block;
+    font-size: 0.875rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  
+  .odd-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .odd-bookmaker {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+  
+  .betting-cta {
+    text-align: center;
+  }
+  
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #000;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.125rem;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .disclaimer {
+    margin-top: 16px;
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+</style>

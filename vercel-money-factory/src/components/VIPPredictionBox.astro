@@ -1,0 +1,176 @@
+---
+// VIP 预测解锁框 - 双重变现路径
+const { matchName, telegramLink = "/go/telegram" } = Astro.props;
+---
+
+<div class="vip-prediction-box">
+  <div class="vip-header">
+    <span class="vip-badge">🔒 VIP</span>
+    <h3>解锁【{matchName}】必发波胆预测</h3>
+  </div>
+  
+  <div class="vip-content">
+    <div class="vip-teaser">
+      <p>✅ <strong>已验证</strong>: 此方案命中率高达 78%</p>
+      <p>📊 包含内容:</p>
+      <ul>
+        <li>精确比分预测（波胆）</li>
+        <li>亚盘/大小球推荐</li>
+        <li>临场赔率变化提醒</li>
+        <li>专家一对一指导</li>
+      </ul>
+    </div>
+    
+    <div class="vip-social-proof">
+      <div class="stat">
+        <span class="stat-number">5000+</span>
+        <span class="stat-label">活跃会员</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">78%</span>
+        <span class="stat-label">命中率</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">¥2.8M</span>
+        <span class="stat-label">累计盈利</span>
+      </div>
+    </div>
+    
+    <a href={telegramLink} class="btn-telegram" target="_blank" rel="noopener">
+      ✈️ 立即加入 VIP 频道
+    </a>
+    
+    <p class="vip-note">
+      <small>🎁 限时优惠：首月仅需 $99 | 不满意全额退款</small>
+    </p>
+  </div>
+</div>
+
+<style>
+  .vip-prediction-box {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    border: 2px solid #fbbf24;
+    border-radius: 16px;
+    padding: 0;
+    margin: 32px 0;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .vip-header {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #000;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .vip-badge {
+    background: #000;
+    color: #fbbf24;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
+  
+  .vip-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .vip-content {
+    padding: 24px;
+    color: white;
+  }
+  
+  .vip-teaser {
+    margin-bottom: 24px;
+  }
+  
+  .vip-teaser p {
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+  
+  .vip-teaser ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 12px 0;
+  }
+  
+  .vip-teaser li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+  }
+  
+  .vip-teaser li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+  
+  .vip-social-proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fbbf24;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+  
+  .btn-telegram {
+    display: block;
+    background: linear-gradient(135deg, #0088cc, #0066aa);
+    color: white;
+    text-align: center;
+    padding: 18px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.125rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 136, 204, 0.3);
+  }
+  
+  .btn-telegram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 136, 204, 0.4);
+    background: linear-gradient(135deg, #0099e6, #0077cc);
+  }
+  
+  .vip-note {
+    text-align: center;
+    margin-top: 16px;
+    opacity: 0.9;
+  }
+  
+  @media (max-width: 640px) {
+    .vip-social-proof {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
