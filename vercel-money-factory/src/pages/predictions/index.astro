@@ -1,0 +1,173 @@
+---
+title: "足球比赛预测 - 英超赛事分析与投注建议"
+description: "AI 驱动的足球比赛预测平台，提供英超、欧冠等赛事的深度分析、实时赔率对比、历史交锋数据及专业投注建议。"
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{Astro.props.title}</title>
+    <meta name="description" content={Astro.props.description}>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .match-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        .match-card.featured {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            border-left: 4px solid #FF8C00;
+        }
+        .match-card a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="margin-bottom: 1rem;">⚽ 足球比赛预测中心</h1>
+        <p style="font-size: 1.1rem; opacity: 0.95;">AI 驱动的专业赛事分析 | 实时数据 · 深度研究 · 精准预测</p>
+        <div style="margin-top: 1.5rem;">
+            <a href="/" class="nav-link">← 返回主页</a>
+            <a href="/donate" class="nav-link">💎 捐赠支持</a>
+        </div>
+    </header>
+
+    <main>
+        <article class="match-card featured">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2 style="margin-bottom: 0.5rem; color: white;">🏆 Manchester United vs Liverpool</h2>
+                    <p style="margin: 0; opacity: 0.95;">📅 2026 年 4 月 5 日 | 🏟️ Old Trafford | ⚽ 英超第 32 轮</p>
+                    <p style="margin: 0.5rem 0 0; opacity: 0.9; font-size: 0.9rem;">⭐ JSON-LD 优化 | 💎 VIP 伤停情报 | 💰 实时赔率对比</p>
+                </div>
+                <div>
+                    <a href="/predictions/manchester-united-vs-liverpool" class="btn">查看完整分析 →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="match-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; color: #1e40af;">⚔️ Liverpool vs Fulham</h3>
+                    <p style="margin: 0; color: #6b7280;">📅 2026 年 4 月 12 日 | 🏟️ Anfield | ⚽ 英超第 33 轮</p>
+                </div>
+                <div>
+                    <a href="/predictions/liverpool-vs-fulham" class="btn">查看分析 →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="match-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; color: #166534;">🎯 Brentford vs Everton</h3>
+                    <p style="margin: 0; color: #6b7280;">📅 2026 年 4 月 11 日 | 🏟️ Gtech Community Stadium | ⚽ 英超第 33 轮</p>
+                </div>
+                <div>
+                    <a href="/predictions/brentford-vs-everton" class="btn">查看分析 →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="match-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; color: #9f1251;">🔥 Burnley vs Brighton</h3>
+                    <p style="margin: 0; color: #6b7280;">📅 2026 年 4 月 11 日 | 🏟️ Turf Moor | ⚽ 保级关键战</p>
+                </div>
+                <div>
+                    <a href="/predictions/burnley-vs-brighton-and-hove-albion" class="btn">查看分析 →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="match-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; color: #3730a3;">⚡ West Ham United vs Wolverhampton Wanderers</h3>
+                    <p style="margin: 0; color: #6b7280;">📅 2026 年 4 月 11 日 | 🏟️ London Stadium | ⚽ 英超第 33 轮</p>
+                </div>
+                <div>
+                    <a href="/predictions/west-ham-united-vs-wolverhampton-wanderers" class="btn">查看分析 →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="match-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; color: #dc2626;">🏆 Arsenal vs Bournemouth</h3>
+                    <p style="margin: 0; color: #6b7280;">📅 2026 年 4 月 11 日 | 🏟️ Emirates Stadium | ⚽ 英超第 33 轮</p>
+                </div>
+                <div>
+                    <a href="/predictions/arsenal-vs-bournemouth" class="btn">查看分析 →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 AI Market Insight. All rights reserved.</p>
+        <p style="font-size: 0.85rem; color: #999; margin-top: 0.5rem;">
+            Investment involves risk. Content is for informational purposes only and should not be considered as financial advice.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,12 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "pip install -r requirements.txt && python build_football_predictions.py && astro build",
+  "buildCommand": "uv venv && source .venv/bin/activate && uv pip install -r requirements.txt && python build_football_predictions.py && astro build",
   "outputDirectory": "dist",
-  "framework": "astro",
-  "crons": [
-    {
-      "path": "/api/build",
-      "schedule": "0 2,10 * * *"
-    }
-  ]
+  "framework": "astro"
 }

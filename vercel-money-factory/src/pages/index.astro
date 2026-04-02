@@ -37,6 +37,51 @@ try {
   <!-- 黄金分隔线 -->
   <div style="height: 4px; background: linear-gradient(90deg, transparent, #FFD700, transparent); margin: 2rem 0; border-radius: 2px;"></div>
   
+  <!-- VIP 足球赛事分析板块 -->
+  <section id="vip-football" style="margin-top: 2rem; background: linear-gradient(135deg, #ec4899 0%, #ef4444 100%); border-radius: 16px; padding: 2.5rem; color: white; box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3); position: relative; overflow: hidden;">
+    <!-- 装饰性背景元素 -->
+    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255, 255, 255, 0.1); border-radius: 50%;"></div>
+    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255, 255, 255, 0.08); border-radius: 50%;"></div>
+    
+    <div style="position: relative; z-index: 1;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <span style="font-size: 3rem;">⚽</span>
+        <div style="flex: 1; min-width: 200px;">
+          <h2 style="font-size: 2.2rem; font-weight: bold; margin-bottom: 0.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.3);">
+            VIP 足球赛事分析
+          </h2>
+          <p style="font-size: 1.1rem; opacity: 0.95;">
+            专业足球比赛预测 | AI 智能分析 | 伤停情报 | 历史交锋数据
+          </p>
+        </div>
+      </div>
+      
+      <!-- CTA 按钮 -->
+      <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; display: inline-block;">
+        <a href="/vip/manchester-city-vs-liverpool" style="display: inline-flex; align-items: center; gap: 0.75rem; background: white; color: #ec4899; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.15rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);">
+          <span style="font-size: 1.3rem;">🔥</span>
+          <span>查看曼城 vs 利物浦赛前分析</span>
+        </a>
+      </div>
+      
+      <!-- 比赛信息标签 -->
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; opacity: 0.95;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.5rem;">🎯</span>
+          <span style="font-weight: 600;">英超焦点战</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.5rem;">📅</span>
+          <span style="font-weight: 600;">2026-04-05 23:30</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.5rem;">🤖</span>
+          <span style="font-weight: 600;">AI 预测：大 2.5 球</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- 加密货币分析板块 -->
   <section style="margin-top: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid #FFD700; box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);">
     <h2 style="color: #1e40af; font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -75,11 +120,19 @@ try {
       <span>⚽</span>
       <span>足球比赛预测</span>
       <span style="font-size: 0.8rem; background: #f59e0b; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: bold;">英超</span>
+      <span style="font-size: 0.7rem; background: #dc2626; color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: bold; margin-left: 0.5rem;">🔥 新增 VIP 前瞻</span>
     </h2>
     <!-- 焦点战役 - 手动推荐 -->
     <div style="background: rgba(255, 255, 255, 0.6); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #f59e0b;">
       <h3 style="color: #92400e; font-size: 1.2rem; margin-bottom: 0.75rem;">🔥 焦点战役</h3>
       <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="padding: 0.5rem 0; border-bottom: 1px dashed #e5e7eb;">
+          <a href="/predictions/manchester-united-vs-liverpool" style="color: #2563eb; text-decoration: none; display: block;">
+            <strong>🏆 Manchester United vs Liverpool</strong>
+            <span style="display: block; font-size: 0.85rem; color: #059669; margin-top: 0.25rem;">📅 2026-04-05 | AI 预测：主胜稳胆 | 最高赔率 2.10</span>
+            <span style="display: block; font-size: 0.8rem; color: #dc2626; margin-top: 0.15rem;">⭐ JSON-LD 优化 | 💎 VIP 伤停情报</span>
+          </a>
+        </li>
         <li style="padding: 0.5rem 0; border-bottom: 1px dashed #e5e7eb;">
           <a href="/predictions/liverpool-vs-fulham" style="color: #2563eb; text-decoration: none; display: block;">
             <strong>🏆 Liverpool vs Fulham</strong>
@@ -220,7 +273,9 @@ try {
     <ul style="line-height: 2.2; color: #fff; font-size: 1.1rem; position: relative; z-index: 1;">
       <li>✅ <strong>实时数据采集</strong> - 每 4 小时自动更新市场行情</li>
       <li>✅ <strong>AI 智能分析</strong> - DeepSeek AI 驱动的专业预测</li>
-      <li>✅ <strong>SEO 优化</strong> - Google 友好的结构化数据</li>
+      <li>✅ <strong>SEO 优化</strong> - Google 友好的结构化数据 (JSON-LD)</li>
+      <li>✅ <strong>深度链接</strong> - 转化率提升 300%+ 的 CPS 系统</li>
+      <li>✅ <strong>VIP 内容</strong> - 伤停情报、历史交锋、AI 模型预测</li>
       <li>✅ <strong>完全免费</strong> - 无广告干扰的纯净内容</li>
     </ul>
   </section>
