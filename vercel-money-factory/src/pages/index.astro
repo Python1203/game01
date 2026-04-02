@@ -76,22 +76,55 @@ try {
       <span>足球比赛预测</span>
       <span style="font-size: 0.8rem; background: #f59e0b; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: bold;">英超</span>
     </h2>
-    {footballPredictions.length > 0 ? (
-      <ul style="list-style: none; padding: 0;">
-        {footballPredictions.map((prediction) => (
-          <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
-            <a href={prediction.url} style="color: #2563eb; text-decoration: none; display: block;">
-              <strong>{prediction.homeTeam}</strong> vs <strong>{prediction.awayTeam}</strong>
-              <span style="display: block; font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">
-                📅 {new Date(prediction.commenceTime).toLocaleDateString('zh-CN')}
-              </span>
-            </a>
-          </li>
-        ))}
+    <!-- 焦点战役 - 手动推荐 -->
+    <div style="background: rgba(255, 255, 255, 0.6); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #f59e0b;">
+      <h3 style="color: #92400e; font-size: 1.2rem; margin-bottom: 0.75rem;">🔥 焦点战役</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="padding: 0.5rem 0; border-bottom: 1px dashed #e5e7eb;">
+          <a href="/predictions/liverpool-vs-fulham" style="color: #2563eb; text-decoration: none; display: block;">
+            <strong>🏆 Liverpool vs Fulham</strong>
+            <span style="display: block; font-size: 0.85rem; color: #059669; margin-top: 0.25rem;">📅 2026-04-11 | AI 预测：主胜稳胆</span>
+          </a>
+        </li>
+        <li style="padding: 0.5rem 0; border-bottom: 1px dashed #e5e7eb;">
+          <a href="/predictions/arsenal-vs-bournemouth" style="color: #2563eb; text-decoration: none; display: block;">
+            <strong>⚔️ Arsenal vs Bournemouth</strong>
+            <span style="display: block; font-size: 0.85rem; color: #059669; margin-top: 0.25rem;">📅 2026-04-11 | 枪手主场强势</span>
+          </a>
+        </li>
+        <li style="padding: 0.5rem 0;">
+          <a href="/predictions/burnley-vs-brighton-and-hove-albion" style="color: #2563eb; text-decoration: none; display: block;">
+            <strong>🎯 Burnley vs Brighton</strong>
+            <span style="display: block; font-size: 0.85rem; color: #059669; margin-top: 0.25rem;">📅 2026-04-11 | 保级关键战</span>
+          </a>
+        </li>
       </ul>
+    </div>
+    <!-- 更多预测 -->
+    {footballPredictions.length > 0 ? (
+      <details style="cursor: pointer;">
+        <summary style="font-weight: 600; color: #92400e; margin-bottom: 0.5rem;">📋 查看更多预测 ({footballPredictions.length}场)</summary>
+        <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+          {footballPredictions.map((prediction) => (
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <a href={prediction.url} style="color: #2563eb; text-decoration: none; display: block;">
+                <strong>{prediction.homeTeam}</strong> vs <strong>{prediction.awayTeam}</strong>
+                <span style="display: block; font-size: 0.85rem; color: #6b7280; margin-top: 0.25rem;">
+                  📅 {new Date(prediction.commenceTime).toLocaleDateString('zh-CN')}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
     ) : (
       <p style="color: #6b7280; font-style: italic;">暂无足球预测，即将更新...</p>
     )}
+    <div style="margin-top: 1rem; text-align: center;">
+      <a href="/predictions" style="display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 0.6rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4); transition: all 0.3s ease;">
+        ⚽ 查看所有足球预测 →
+      </a>
+    </div>
   </section>
 
   <!-- 美股分析板块 -->
