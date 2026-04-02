@@ -44,6 +44,13 @@ class FootballDataCollector:
                     odds_data = response.json()[:limit]  # 只取前 N 场
                     
                     for match in odds_data:
+                        # 先提取最佳赔率（需要主客队名称）
+                        best_odds = self._extract_best_odds(
+                            match.get("bookmakers", []),
+                            match["home_team"],
+                            match["away_team"]
+                        )
+                        
                         match_info = {
                             "id": match["id"],
                             "home_team": match["home_team"],
@@ -51,7 +58,7 @@ class FootballDataCollector:
                             "commence_time": match["commence_time"],
                             "sport_title": match["sport_title"],
                             "bookmakers": match.get("bookmakers", []),
-                            "best_odds": self._extract_best_odds(match.get("bookmakers", []))
+                            "best_odds": best_odds
                         }
                         
                         # 2. 如果有 Football API，获取球队近况
@@ -72,22 +79,33 @@ class FootballDataCollector:
             print(f"❌ 获取比赛数据失败：{e}")
             return []
     
-    def _extract_best_odds(self, bookmakers: List) -> Dict:
+    def _extract_best_odds(self, bookmakers: List, home_team: str = None, away_team: str = None) -> Dict:
         """提取最佳赔率"""
         best_odds = {"home": 0, "draw": 0, "away": 0}
         
         for bookmaker in bookmakers:
             if bookmaker.get("markets"):
-                outcomes = bookmaker["markets"][0].get("outcomes", [])
-                for outcome in outcomes:
-                    name = outcome["name"].lower()
-                    price = outcome["price"]
-                    
-                    if "home" in name or "draw" in name or "away" in name:
-                        key = "home" if "home" in name else ("draw" if "draw" in name else "away")
-                        if price > best_odds[key]:
-                            best_odds[key] = price
-                            best_odds[f"{key}_bookmaker"] = bookmaker["title"]
+                # h2h 市场的 outcomes 直接包含主/平/客
+                for market in bookmaker["markets"]:
+                    if market.get("key") == "h2h":
+                        outcomes = market.get("outcomes", [])
+                        for outcome in outcomes:
+                            name = outcome["name"]  # 保持原始名称（如 "West Ham United"）
+                            price = outcome["price"]
+                            
+                            # 根据队伍名称匹配
+                            if name == "Draw":
+                                key = "draw"
+                            elif name == home_team or (home_team and name.lower() == home_team.lower()):
+                                key = "home"
+                            elif name == away_team or (away_team and name.lower() == away_team.lower()):
+                                key = "away"
+                            else:
+                                continue
+                            
+                            if price > best_odds[key]:
+                                best_odds[key] = price
+                                best_odds[f"{key}_bookmaker"] = bookmaker["title"]
         
         return best_odds
     
