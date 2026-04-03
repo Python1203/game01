@@ -1,6 +1,14 @@
 {
   "version": 2,
-  "buildCommand": "uv venv && source .venv/bin/activate && uv pip install -r requirements.txt && python build_football_predictions.py && astro build",
+  "buildCommand": "npm install && astro build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "rewrites": [
+    { "source": "/stock-analysis", "destination": "/stock-analysis/index.html" },
+    { "source": "/stock-analysis/:slug", "destination": "/stock-analysis/:slug/index.html" },
+    { "source": "/etf-analysis", "destination": "/etf-analysis/index.html" },
+    { "source": "/etf-analysis/:slug", "destination": "/etf-analysis/:slug/index.html" },
+    { "source": "/index-analysis", "destination": "/index-analysis/index.html" },
+    { "source": "/index-analysis/:slug", "destination": "/index-analysis/:slug/index.html" }
+  ]
 }
