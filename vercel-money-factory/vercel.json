@@ -2,5 +2,9 @@
   "version": 2,
   "buildCommand": "npm install && astro build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "project": "game01",
+  "domains": {
+    "869.us.ci": {}
+  }
 }
