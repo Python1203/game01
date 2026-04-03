@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "rm -rf dist node_modules && npm install && astro build",
+  "buildCommand": "npm install && astro build",
   "outputDirectory": "dist",
   "framework": "astro"
 }
