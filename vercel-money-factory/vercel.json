@@ -2,13 +2,5 @@
   "version": 2,
   "buildCommand": "rm -rf dist node_modules && npm install && astro build",
   "outputDirectory": "dist",
-  "framework": "astro",
-  "rewrites": [
-    { "source": "/stock-analysis", "destination": "/stock-analysis/index.html" },
-    { "source": "/stock-analysis/:slug", "destination": "/stock-analysis/:slug/index.html" },
-    { "source": "/etf-analysis", "destination": "/etf-analysis/index.html" },
-    { "source": "/etf-analysis/:slug", "destination": "/etf-analysis/:slug/index.html" },
-    { "source": "/index-analysis", "destination": "/index-analysis/index.html" },
-    { "source": "/index-analysis/:slug", "destination": "/index-analysis/:slug/index.html" }
-  ]
+  "framework": "astro"
 }

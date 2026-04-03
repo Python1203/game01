@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
   site: 'https://869.us.ci',
-  base: '/',
-  trailingSlash: 'ignore',
+  adapter: vercel(),
   compressHTML: true,
   build: {
     inlineStylesheets: 'auto'
