@@ -23,30 +23,18 @@ class IndexETFUpdater:
     def __init__(self, output_dir: str = "./public"):
         self.output_dir = output_dir
         
-        # 全球主要指数
+        # 全球主要指数（只取前 3 个）
         self.indices = [
             "^GSPC",  # 标普 500
             "^DJI",   # 道琼斯
             "^IXIC",  # 纳斯达克
-            "^VIX",   # 恐慌指数
-            "^FTSE",  # 富时 100
-            "^GDAXI", # DAX
-            "^N225",  # 日经 225
-            "^HSI"    # 恒生
         ]
         
-        # 热门 ETF
+        # 热门 ETF（只取前 3 个）
         self.etfs = [
             "SPY",    # 标普 500 ETF
             "QQQ",    # 纳斯达克 100 ETF
-            "DIA",    # 道琼斯 ETF
             "GLD",    # 黄金 ETF
-            "TLT",    # 20 年 + 国债 ETF
-            "VTI",    # 全美市场 ETF
-            "EFA",    # 发达市场 ETF
-            "EEM",    # 新兴市场 ETF
-            "XLF",    # 金融行业 ETF
-            "XLK"     # 科技行业 ETF
         ]
         
         # 确保输出目录存在
@@ -146,20 +134,23 @@ class IndexETFUpdater:
         original_title = article.title
         article.title = f"【即将推出】{original_title}"
         
-        # 在内容开头添加预告框
-        coming_soon_box = f"""
-> 🚀 **更多精彩即将推出**
-> 
-> 我们正在为您准备更深入的 {data['name']} 分析报告，包括：
-> - 📊 全球经济形势分析
-> - 💰 央行政策解读
-> - 🔍 资金流向监测
-> - 📈 多周期技术预测
-> 
-> 敬请期待！
-"""
+        # 在内容开头添加预告框（HTML 格式）
+        coming_soon_box = f"""<div class="coming-soon-box" style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 4px;">
+<h3 style="color: #856404; margin-bottom: 10px;">🚀 更多精彩即将推出</h3>
+<p style="color: #856404;">我们正在为您准备更深入的 {data['name']} 分析报告，包括：</p>
+<ul style="color: #856404; margin: 10px 0; padding-left: 20px;">
+<li>📊 全球经济形势分析</li>
+<li>💰 央行政策解读</li>
+<li>🔍 资金流向监测</li>
+<li>📈 多周期技术预测</li>
+</ul>
+<p style="color: #856404; font-weight: bold;">敬请期待！</p>
+</div>"""
         
-        article.content = coming_soon_box + "\n\n" + article.content
+        # 清理内容中的 Markdown 标记
+        cleaned_content = article.content.replace('```markdown\n', '').replace('```', '').replace('#<h2>', '<h2>').replace('##<h2>', '<h3>')
+        
+        article.content = coming_soon_box + "\n\n" + cleaned_content
         
         # 注入变现链接
         injected_content = injector.inject_links(article)
@@ -196,20 +187,23 @@ class IndexETFUpdater:
         original_title = article.title
         article.title = f"【即将推出】{original_title}"
         
-        # 在内容开头添加预告框
-        coming_soon_box = f"""
-> 🚀 **更多精彩即将推出**
-> 
-> 我们正在为您准备更深入的 {data['name']} 分析报告，包括：
-> - 📊 持仓结构深度解析
-> - 💰 费用率对比分析
-> - 🔍 历史回测数据
-> - 📈 配置比例建议
-> 
-> 敬请期待！
-"""
+        # 在内容开头添加预告框（HTML 格式）
+        coming_soon_box = f"""<div class="coming-soon-box" style="background: #e3f2fd; border-left: 4px solid #2196F3; padding: 20px; margin: 20px 0; border-radius: 4px;">
+<h3 style="color: #1565C0; margin-bottom: 10px;">🚀 更多精彩即将推出</h3>
+<p style="color: #1565C0;">我们正在为您准备更深入的 {data['name']} 分析报告，包括：</p>
+<ul style="color: #1565C0; margin: 10px 0; padding-left: 20px;">
+<li>📊 持仓结构深度解析</li>
+<li>💰 费用率对比分析</li>
+<li>🔍 历史回测数据</li>
+<li>📈 配置比例建议</li>
+</ul>
+<p style="color: #1565C0; font-weight: bold;">敬请期待！</p>
+</div>"""
         
-        article.content = coming_soon_box + "\n\n" + article.content
+        # 清理内容中的 Markdown 标记
+        cleaned_content = article.content.replace('```markdown\n', '').replace('```', '').replace('#<h2>', '<h2>').replace('##<h2>', '<h3>').replace('# ', '<h3>').replace('## ', '<h4>')
+        
+        article.content = coming_soon_box + "\n\n" + cleaned_content
         
         # 注入变现链接
         injected_content = injector.inject_links(article)
@@ -230,11 +224,7 @@ class IndexETFUpdater:
             "^GSPC": "标普 500",
             "^DJI": "道琼斯工业平均",
             "^IXIC": "纳斯达克综合",
-            "^VIX": "恐慌指数",
-            "^FTSE": "富时 100",
-            "^GDAXI": "德国 DAX",
-            "^N225": "日经 225",
-            "^HSI": "恒生指数"
+
         }
         
         for symbol in self.indices:
@@ -299,12 +289,7 @@ class IndexETFUpdater:
             "QQQ": "纳斯达克 100 ETF",
             "DIA": "道琼斯 ETF",
             "GLD": "黄金 ETF",
-            "TLT": "20 年 + 国债 ETF",
-            "VTI": "全美市场 ETF",
-            "EFA": "发达市场 ETF",
-            "EEM": "新兴市场 ETF",
-            "XLF": "金融行业 ETF",
-            "XLK": "科技行业 ETF"
+
         }
         
         for symbol in self.etfs:

@@ -1,0 +1,96 @@
+---
+const title = "美股分析 - 热门投资信号";
+const description = "最新美股分析报告，深度分析 AAPL、TSLA、NVDA 等热门股票";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; background: #f9fafb; color: #1f2937; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .back-link { display: inline-block; color: #667eea; text-decoration: none; margin-bottom: 20px; }
+        h1 { font-size: 2.5rem; color: #1e40af; margin-bottom: 1rem; }
+        .banner { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 4px solid #f59e0b; padding: 20px; margin: 30px 0; border-radius: 8px; }
+        .banner h2 { color: #92400e; margin-bottom: 10px; font-size: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .card { border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: white; }
+        .card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .badge { display: inline-block; background: #e3f2fd; color: #1976d2; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; margin-bottom: 10px; }
+        .card h2 { color: #667eea; margin: 10px 0; font-size: 1.3rem; }
+        .card p { color: #666; line-height: 1.6; font-size: 0.95rem; }
+        footer { text-align: center; padding: 40px 0; color: #666; margin-top: 60px; border-top: 1px solid #e5e7eb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 返回首页</a>
+        
+        <h1>📈 美股分析</h1>
+        
+        <div class="banner">
+            <h2>🚀 全新改版即将上线</h2>
+            <p>我们正在为您准备更深入的美股分析报告，包含技术面、基本面、资金流向等多维度分析</p>
+        </div>
+        
+        <div class="grid">
+            <a href="/stock-analysis/aapl-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>🍎 Apple (AAPL) 深度分析</h2>
+                <p>短期回调还是长期买入机会？关键支撑位 245 美元成焦点</p>
+            </a>
+            
+            <a href="/stock-analysis/tsla-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>🚗 Tesla (TSLA) 深度分析</h2>
+                <p>短期回调还是长期买入机会？关键指标揭示后市走势</p>
+            </a>
+            
+            <a href="/stock-analysis/nvda-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>🎮 Nvidia (NVDA) 深度分析</h2>
+                <p>关键支撑与 AI 增长逻辑全解读</p>
+            </a>
+            
+            <a href="/stock-analysis/msft-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>💻 Microsoft (MSFT) 深度分析</h2>
+                <p>科技巨头能否突破历史新高？</p>
+            </a>
+            
+            <a href="/stock-analysis/googl-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>🔍 Google (GOOGL) 深度分析</h2>
+                <p>短期回调还是长期买入机会？</p>
+            </a>
+            
+            <a href="/stock-analysis/meta-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>👍 Meta (META) 深度分析</h2>
+                <p>股价突破后的投资机会与风险分析</p>
+            </a>
+            
+            <a href="/stock-analysis/amzn-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>📦 Amazon (AMZN) 深度分析</h2>
+                <p>突破 200 美元关口后能否延续涨势？</p>
+            </a>
+            
+            <a href="/stock-analysis/amd-20260331/" class="card">
+                <span class="badge">即将推出</span>
+                <h2>⚡ AMD 深度分析</h2>
+                <p>短期回调还是长期买入机会？</p>
+            </a>
+        </div>
+        
+        <footer>
+            <p>&copy; 2026 AI Market Insight. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -25,7 +25,7 @@ class FootballDataCollector:
         self.odds_key = ODDS_API_KEY
         self.football_key = FOOTBALL_API_KEY
         
-    def get_combined_matches(self, limit: int = 5) -> List[Dict]:
+    def get_combined_matches(self, limit: int = 3) -> List[Dict]:
         """
         获取比赛数据（合并策略）
         只取前 N 场热门比赛，节省 API 额度
